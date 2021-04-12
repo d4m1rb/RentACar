@@ -1,0 +1,36 @@
+﻿using RentACarApp.Model.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace RentACar.WebAplikacija.ViewModels
+{
+    public class RezervacijeAdmVM
+    {
+        public class Row
+        {
+            public int RezervacijaRentanjaId { get; set; }
+            public int RacunId { get; set; }
+            public int AutomobilId { get; set; }
+            public int KlijentId { get; set; }
+            public DateTime DatumKreiranja { get; set; }
+            public string LokacijaPreuzimanja { get; set; }
+            public bool VracanjeUposlovnicu { get; set; }
+            public string Opis { get; set; }
+            public DateTime RezervacijaOd { get; set; }
+            public DateTime RezervacijaDo { get; set; }                  
+            public decimal Iznos { get; set; }
+            public decimal IznosSaPopustom { get; set; }
+            public string Klijent { get; set; }
+            public string RezervacijaInformacije { get; set; }
+            public string VoziloInformacije { get; set; }
+            public string VoziloProizvodjacModel { get; set; }
+            public string RezervacijaOdDo { get; set; }
+            public bool Zavrsena { get; set; }
+            public bool KaskoOsiguranje { get; set; }
+
+        }
+        public List<Row> listaRezervacija { get; set; } = new List<Row>();
+    }
+}

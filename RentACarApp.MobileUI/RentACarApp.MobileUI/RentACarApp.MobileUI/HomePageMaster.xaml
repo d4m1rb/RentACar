@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RentACarApp.MobileUI.HomePageMasterMaster"
+             Title="Master">
+  <StackLayout>
+    <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}">
+      <d:ListView.ItemsSource>
+          <x:Array Type="{x:Type x:String}">
+              <x:String>Početna</x:String>
+              <x:String>Vozila</x:String>
+                    <x:String>Iznajmi vozilo</x:String>
+                    <x:String>Moje rezervacije</x:String>
+              <x:String>Postavke</x:String>
+              <x:String>Odjava</x:String>
+          </x:Array>
+      </d:ListView.ItemsSource>
+      <ListView.Header>
+          <Grid BackgroundColor="#FE407F">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="10"/>
+          </Grid.RowDefinitions>
+            
+            <Image Grid.Column="1"
+                    Grid.Row="1"
+                    Source="RentACarRCLogo.png">
+                        
+            </Image>
+          <!--<Label
+              Grid.Column="1"
+              Grid.Row="2"
+              Text="RENT A CAR"
+              HorizontalTextAlignment="Center"
+              Style="{DynamicResource SubtitleStyle}"/>-->
+        </Grid>
+      </ListView.Header>
+      <ListView.ItemTemplate>               
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout VerticalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    Padding="20,15,0,10"
+                    Spacing="20">
+
+                <Image Source="{Binding Icon}"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    VerticalOptions="Center" />
+
+                <Label Text="{Binding Title}"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    TextColor="Black"/>
+            </StackLayout>
+                        <!--<StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+              <Label VerticalOptions="FillAndExpand" 
+                    VerticalTextAlignment="Center" 
+                    Text="{Binding Title}" 
+                    d:Text="{Binding .}"
+                    FontSize="24"/>
+            </StackLayout>-->
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

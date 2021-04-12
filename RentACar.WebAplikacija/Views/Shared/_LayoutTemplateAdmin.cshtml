@@ -1,0 +1,345 @@
+﻿@using RentACar.WebAplikacija.Helper
+@using RentACarApp.Model.Models
+@{
+    Korisnici user = await Context.GetLogiraniKorisnikAdm();
+}
+
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 4 & Angular 8
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en">
+<!-- begin::Head -->
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Rent A Car | @ViewData["Title"]
+    </title>
+    <meta content="Latest updates and statistic charts" name="description">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"><!--begin::Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700" rel="stylesheet"><!--end::Fonts -->
+    <!--begin::Page Vendors Styles(used by this page) -->
+    <link href="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css"><!--end::Page Vendors Styles -->
+    <!--begin::Global Theme Styles(used by all pages) -->
+    <link href="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css">
+    <link href="/metronic/themes/metronic/theme/default/demo12/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css"><!--end::Global Theme Styles -->
+    @RenderSection("Styles", required: false)
+    <!--begin::Layout Skins(used by all pages) -->
+    <!--end::Layout Skins -->
+    <link href="~/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/rentacar_icon.ico" rel="shortcut icon"><!-- Hotjar Tracking Code for keenthemes.com -->
+
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 1070954, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script><!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37564768-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-37564768-1');
+    </script>
+</head><!-- end::Head -->
+<!-- begin::Body -->
+
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
+    <!-- begin:: Page -->
+    <!-- begin:: Header Mobile -->
+
+    <div class="kt-header-mobile kt-header-mobile--fixed" id="kt_header_mobile">
+        <div class="kt-header-mobile__logo">
+            <a href="/Home/Administrator"><img alt="Logo" src="/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/RentACar.png"></a>
+        </div>
+
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toolbar-toggler kt-header-mobile__toolbar-toggler--left" id="kt_aside_mobile_toggler"><span></span></button> 
+            
+            <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+        </div>
+    </div>
+    <!-- end:: Header Mobile -->
+
+    <div class="kt-grid kt-grid--hor kt-grid--root">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <!-- begin:: Aside -->
+            <button class="kt-aside-close" id="kt_aside_close_btn"><i class="la la-close"></i></button>
+            <div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+                <!-- begin:: Aside -->
+
+                <div class="kt-aside__brand kt-grid__item" id="kt_aside_brand" style="">
+                    <div class="kt-aside__brand-logo">
+                        <a href="/Home/Administrator"><img alt="Logo" src="/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/RentACar.png"></a>
+                    </div>
+
+                    <div class="kt-aside__brand-tools">
+                        <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler"><span></span></button>
+                    </div>
+                </div>
+                <!-- end:: Aside -->
+                <!-- begin:: Aside Menu -->
+                <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
+                    <div class="kt-aside-menu kt-scroll ps ps--active-y" data-ktmenu-dropdown-timeout="500" data-ktmenu-scroll="1" data-ktmenu-vertical="1" id="kt_aside_menu" style="height: 398px; overflow: hidden;">
+                        <ul class="kt-menu__nav">
+                            <li id="DashboardListItem" aria-haspopup="true" class="kt-menu__item kt-menu__item--active">
+                                <a class="kt-menu__link" href="/Home/Administrator"><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i> <span class="kt-menu__link-text">Dashboard</span></a>
+                            </li>
+
+                            <li class="kt-menu__section">
+                                <h4 class="kt-menu__section-text">
+                                    SVE OSIM ODJAVE
+                                </h4>
+                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                            </li>
+
+                            <li id="PorukaGlavniMeni" aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon fa fa-envelope"></i> <span class="kt-menu__link-text">Poruke</span> <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+
+                                <div id="PorukaSporedniMeniDiv" class="kt-menu__submenu" style="display: none; overflow: hidden;" bis_skin_checked="1" kt-hidden-height="80">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li id="PorukePoslaneListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/PorukeAdm/Poslane"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Poslane poruke</span></a>
+                                        </li>
+
+                                        <li id="PorukePrimljeneListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/PorukeAdm/Primljene"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Primljene poruke</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+                            <li id="KorisnikGlavniMeni" aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon fa fa-user-tie"></i> <span class="kt-menu__link-text">Korisnici</span> <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+
+                                <div id="KorisnikSporedniMeniDiv" class="kt-menu__submenu" style="display: none; overflow: hidden;" bis_skin_checked="1" kt-hidden-height="80">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li id="KorisniciListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/KorisniciAdm"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista korisnika</span></a>
+                                        </li>
+
+                                        <li id="KorisniciDodajListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/KorisniciAdm/Dodaj"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Novi korisnik</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </li>
+
+
+                            <li id="KlijentGlavniMeni" aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon fa fa-users"></i> <span class="kt-menu__link-text">Klijenti</span> <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div id="KlijentSporedniMeniDiv" class="kt-menu__submenu" style="display: none; overflow: hidden;" bis_skin_checked="1" kt-hidden-height="80">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li id="KlijentiListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/KlijentiAdm"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista klijenata</span></a>
+                                        </li>
+
+                                        <li id="KlijentiDodajListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/KlijentiAdm/Dodaj"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Novi klijent</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li id="VoziloGlavniMeni" aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon fa fa-car"></i> <span class="kt-menu__link-text">Vozila</span> <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div id="VoziloSporedniMeniDiv" class="kt-menu__submenu" style="display: none; overflow: hidden;" bis_skin_checked="1" kt-hidden-height="80">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li id="VozilaListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/VoziloAdm"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista vozila</span></a>
+                                        </li>
+
+                                        <li id="VozilaDodajListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/VoziloAdm/Dodaj"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Novo vozilo</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li id="RezervacijaGlavniMeni" aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="javascript:;"><i class="kt-menu__link-icon fa fa-calendar-alt"></i> <span class="kt-menu__link-text">Rezervacije</span> <i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div id="RezervacijaSporedniMeniDiv" class="kt-menu__submenu" style="display: none; overflow: hidden;" bis_skin_checked="1" kt-hidden-height="80">
+                                    <span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li id="RezervacijeListItem" aria-haspopup="true" class="kt-menu__item">
+                                            <a class="kt-menu__link" href="/RezervacijaAdm"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Lista rezervacija</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                                                                                                          
+
+                            <li class="kt-menu__section">
+                                <h4 class="kt-menu__section-text">
+                                    Odjava
+                                </h4>
+                                <i class="kt-menu__section-icon flaticon-more-v2"></i>
+                            </li>
+
+                            <li aria-haspopup="true" class="kt-menu__item kt-menu__item--submenu" data-ktmenu-submenu-toggle="hover">
+                                <a class="kt-menu__link kt-menu__toggle" href="/Login/Logout"><i class="kt-menu__link-icon fa fa-power-off"></i><span class="kt-menu__link-text">Odjavi se</span></a>
+
+                            </li>
+                        </ul>
+
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" style="left: 0px; width: 0px;" tabindex="0">
+                            </div>
+                        </div>
+
+                        <div class="ps__rail-y" style="top: 0px; height: 398px; right: 2px;">
+                            <div class="ps__thumb-y" style="top: 0px; height: 300px;" tabindex="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end:: Aside Menu -->
+            </div>
+            <!-- end:: Aside -->
+
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                <!-- begin:: Header -->
+
+                <div class="kt-header kt-grid__item kt-header--fixed" id="kt_header">
+                    <!-- begin: Header Menu -->
+                    <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+                    <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
+                    </div>
+                    <!-- end: Header Menu --><!-- begin:: Header Topbar -->
+
+                    <div class="kt-header__topbar">
+                        <!--begin: Search -->
+                        <!--begin: Search -->
+                        <!--end: Search -->
+                        <!--end: Search -->
+                        <!--begin: Notifications -->
+                        <!--end: Notifications --><!--begin: Quick Actions -->
+                        <!--end: Quick Actions -->
+                        <!--begin: My Cart -->
+                        <!--end: My Cart --><!--begin: Quick panel toggler -->
+                        <!--end: Quick panel toggler --><!--begin: Language bar -->
+                        <!--end: Language bar --><!--begin: User Bar -->
+
+                        <div class="kt-header__topbar-item kt-header__topbar-item--user">
+                            <div class="kt-header__topbar-wrapper" data-offset="0px,0px" data-toggle="dropdown">
+                                <div class="kt-header__topbar-user">
+                                    <span class="kt-header__topbar-welcome kt-hidden-mobile">Pozdrav,</span> <span class="kt-header__topbar-username kt-hidden-mobile">@user.Ime</span> <img style="width:25px;height:25px;" alt="Pic" class="kt-radius-100" src="data:image/jpg;base64, @Convert.ToBase64String(user.SlikaThumb)"> <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                                    <!--<span class="kt-badge kt-badge==username kt-badge==unified-success kt-badge==lg kt-badge==rounded kt-badge==bold">S</span>-->
+                                </div>
+                            </div>
+
+                            <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+                                <!--begin: Head -->
+
+                                <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(/metronic/themes/metronic/theme/default/demo12/dist/assets/media/misc/bg-1.jpg)">
+                                    <div class="kt-user-card__avatar">
+                                        <img alt="Pic" class="kt-hidden" src="data:image/jpg;base64, @Convert.ToBase64String(user.SlikaThumb)">
+                                        @*<img alt="Pic" class="kt-hidden" src="/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/300_25.jpg">*@
+                                        <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
+                                        <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">@user.Ime[0]</span>
+                                    </div>
+
+                                    <div class="kt-user-card__name">
+                                        @user.Ime @user.Prezime
+                                    </div>
+
+                                    <div class="kt-user-card__badge">
+                                        <span class="btn btn-success btn-sm btn-bold btn-font-md">@user.UserName</span>
+                                    </div>
+                                </div>
+                                <!--end: Head -->
+                                <!--begin: Navigation -->
+
+                                <div class="kt-notification">
+                                    <a href="/ProfilAdmin" class="kt-notification__item">
+                                        <div class="kt-notification__item-icon">
+                                            <i class="flaticon2-calendar-3 kt-font-success"></i>
+                                        </div>
+                                        <div class="kt-notification__item-details">
+                                            <div class="kt-notification__item-title kt-font-bold">
+                                                Moj profil
+                                            </div>
+                                            <div class="kt-notification__item-time">
+                                                Postavke korisničkog računa
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="kt-notification__custom kt-space-between">
+                                        <a href="~/Login/Logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Odjavi se</a>
+                                    </div>
+                                </div>
+                                <!--end: Navigation -->
+                            </div>
+                        </div>
+                        <!--end: User Bar -->
+                    </div>
+                    <!-- end:: Header Topbar -->
+                </div>
+                <!-- end:: Header -->
+
+                <div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                    @RenderBody();
+                </div>
+                <!-- begin:: Footer -->
+
+                
+                <!-- end:: Footer -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Page -->
+    
+    <!-- begin::Scrolltop -->
+
+    <div class="kt-scrolltop" id="kt_scrolltop">
+        <i class="fa fa-arrow-up"></i>
+    </div>
+    <!-- end::Scrolltop -->
+ 
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+    <script>
+        var KTAppOptions = { "colors": { "state": { "brand": "#2c77f4", "light": "#ffffff", "dark": "#282a3c", "primary": "#5867dd", "success": "#34bfa3", "info": "#36a3f7", "warning": "#ffb822", "danger": "#fd3995" }, "base": { "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"], "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"] } } };
+    </script> <!-- end::Global Config -->
+    <!--begin::Global Theme Bundle(used by all pages) -->
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/plugins.bundle.js" type="text/javascript">
+    </script>
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/scripts.bundle.js" type="text/javascript">
+    </script> <!--end::Global Theme Bundle -->
+    <!--begin::Page Vendors(used by this page) -->
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript">
+    </script>
+    <script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript">
+    </script>
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/gmaps/gmaps.js" type="text/javascript">
+    </script> <!--end::Page Vendors -->
+    <!--begin::Page Scripts(used by this page) -->
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/dashboard.js" type="text/javascript">
+    </script> <!--end::Page Scripts -->
+    @RenderSection("Scripts", required: false)<!-- end::Body -->
+</body>
+</html>

@@ -1,0 +1,371 @@
+﻿@model RentACar.WebAplikacija.ViewModels.RezervacijePretragaVM
+@{
+    ViewData["Title"] = "Dostupna vozila";
+    Layout = "_LayoutTemplate";
+
+}
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+
+                $("#RezervacijaGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#RezervacijaSporedniMeni2").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("RezervacijaGlavniMeniDiv").style = "";
+                document.getElementById("RezervacijaSporedniMeniDiv").style = "";
+            });
+        });
+    </script>
+
+<script>
+    $(document).ready(function () {
+        
+        $('#selectKategorijaVozila').change(function(){
+        $('#kategorijaForm').submit();
+        });
+    });
+</script>
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/components/extended/sweetalert2.js" type="text/javascript" aria-hidden="true"></script>
+
+
+    @if (Model._porukaDostupnaVozila != null)
+    {
+        <script>
+    window.addEventListener("load", function () {
+        swal.fire("Poruka","@Model._porukaDostupnaVozila");
+    });
+        </script>
+    }
+}
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <!-- begin:: Content Head -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <h3 class="kt-subheader__title">
+                    Dostupna vozila
+                </h3>
+
+                <span class="kt-subheader__separator kt-subheader__separator--v"></span>
+
+                <div class="kt-subheader__group" id="kt_subheader_search">
+                    <span class="kt-subheader__desc" id="kt_subheader_total">
+                        @Model.listaAutomobila.Count() ukupno
+                    </span>                    
+                </div>
+
+                <div class="kt-subheader__group kt-hidden" id="kt_subheader_group_actions">
+
+                    <div class="kt-subheader__desc"><span id="kt_subheader_group_selected_rows"></span> Selected:</div>
+
+                    <div class="btn-toolbar kt-margin-l-20">
+                        <div class="dropdown" id="kt_subheader_group_actions_status_change">
+                            <button type="button" class="btn btn-label-brand btn-bold btn-sm dropdown-toggle" data-toggle="dropdown">
+                                Update Status
+                            </button>
+                            <div class="dropdown-menu">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__section kt-nav__section--first">
+                                        <span class="kt-nav__section-text">Change status to:</span>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link" data-toggle="status-change" data-status="1">
+                                            <span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-success kt-badge--inline kt-badge--bold">Approved</span></span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link" data-toggle="status-change" data-status="2">
+                                            <span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-danger kt-badge--inline kt-badge--bold">Rejected</span></span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link" data-toggle="status-change" data-status="3">
+                                            <span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-warning kt-badge--inline kt-badge--bold">Pending</span></span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link" data-toggle="status-change" data-status="4">
+                                            <span class="kt-nav__link-text"><span class="kt-badge kt-badge--unified-info kt-badge--inline kt-badge--bold">On Hold</span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button class="btn btn-label-success btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_fetch" data-toggle="modal" data-target="#kt_datatable_records_fetch_modal">
+                            Fetch Selected
+                        </button>
+                        <button class="btn btn-label-danger btn-bold btn-sm btn-icon-h" id="kt_subheader_group_actions_delete_all">
+                            Delete All
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end:: Content Head -->
+
+    <form id="kategorijaForm" class="kt-form kt-form--label-right" action="/Rezervacija/PretragaPoKategoriji" method="post" style="width:99%;">
+        <div class="form-group row" bis_skin_checked="1">
+            <label class="col-form-label col-lg-3 col-sm-12">Kategorija vozila</label>
+            <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                <select asp-for="@Model.kategorijaVozilaId" class="form-control" id="selectKategorijaVozila" name="kategorijaID" asp-items="@Model.listaKategorija"></select>
+            </div>
+        </div>        
+    </form>
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <!--Begin::Section-->
+
+        <input type="date" asp-for="@Model.DatumRezervacijaOd" value="@Model.DatumRezervacijaOd" hidden />
+        <input type="date" asp-for="@Model.DatumRezervacijaDo" value="@Model.DatumRezervacijaDo" hidden />
+
+        @Html.Raw(@"<div class=""row"">")
+        @for (int i = 0; i < Model.listaAutomobila.Count(); i++)
+        {
+            @if (i % 4 == 0)
+            {
+                @Html.Raw(@"</div>");
+                @Html.Raw(@"<div class=""row"">")
+                <div class="col-xl-3">
+                    <!--Begin::Portlet-->
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title"></h3>
+                            </div>
+
+                        </div>
+                        <div class="kt-portlet__body">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-2">
+                                <div class="kt-widget__head" style="height:150px;">
+                                    <div class="kt-widget__media">
+                                        @*<img class="kt-widget__img kt-hidden-" src="/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/300_21.jpg" alt="image">*@
+                                        <img src="data:image/jpg;base64, @Convert.ToBase64String(Model.listaAutomobila[i].SlikaThumb)">
+                                        <div class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
+                                            ChS
+                                        </div>
+                                    </div>
+
+                                    <div class="kt-widget__info" style="width:100%; text-align:center;">
+                                        <a href="#" class="kt-widget__username">
+                                            @Model.listaAutomobila[i].ProizvodjacModel
+                                        </a>
+
+                                        <span class="kt-widget__desc">
+                                            @Model.listaAutomobila[i].RegistarskaOznaka <br />
+                                            @Model.listaAutomobila[i].Transmisija
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="kt-widget__body">
+
+                                    <div class="kt-widget__item">
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Boja:</span>
+                                            <a href="#" class="kt-widget__data"> @Model.listaAutomobila[i].Boja</a>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Broj sjedišta:</span>
+                                            <a href="#" class="kt-widget__data">@Model.listaAutomobila[i].BrojSjedista</a>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Broj vrata:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].BrojVrata</span>
+                                        </div>
+
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Godina proizvodnje:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].GodinaProizvodnje</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Gorivo:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].Gorivo</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Kubikaža:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].KubikazaString</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Potrošnja:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].Potrosnja L/100 km</span>
+                                        </div>
+
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Cijena iznajmljivanja:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].CijenaIznajmljivanja KM</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Cijena kasko:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].CijenaKaskoOsiguranja KM</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Prosječna ocjena:</span>
+                                            @if (Model.listaAutomobila[i].ProsjecnaOcjena != 0)
+                                            {
+                                                <span class="kt-widget__data">@Model.listaAutomobila[i].ProsjecnaOcjena.ToString("0.0")</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="kt-widget__data">Nema ocjena!</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @if (@Model.listaAutomobila[i].Dostupan == true)
+                                {
+                                    <div class="kt-widget__footer">
+                                        <a href="/Rezervacija/Rezervisi?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Rezerviši</a>
+                                    </div>
+                                    @*<div class="kt-widget__footer">
+                                            <a href="/Rezervacija/Detalji?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Detalji</a>
+                                        </div>*@
+                                }
+                                else
+                                {
+                                    @*<div class="kt-widget__footer">
+                                            <a href="/Rezervacija/Detalji?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Detalji</a>
+                                        </div>*@
+                                }
+                            </div>
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                    <!--End::Portlet-->
+                </div>
+            }
+            else
+            {
+                <div class="col-xl-3">
+                    <!--Begin::Portlet-->
+                    <div class="kt-portlet kt-portlet--height-fluid">
+                        <div class="kt-portlet__head kt-portlet__head--noborder">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title"></h3>
+                            </div>
+
+                        </div>
+                        <div class="kt-portlet__body">
+                            <!--begin::Widget -->
+                            <div class="kt-widget kt-widget--user-profile-2">
+                                <div class="kt-widget__head" style="height:150px;">
+                                    <div class="kt-widget__media">
+                                        @*<img class="kt-widget__img kt-hidden-" src="/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/300_21.jpg" alt="image">*@
+                                        <img src="data:image/jpg;base64, @Convert.ToBase64String(Model.listaAutomobila[i].SlikaThumb)">
+                                        <div class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
+                                            ChS
+                                        </div>
+                                    </div>
+
+                                    <div class="kt-widget__info" style="width:100%; text-align:center;">
+                                        <a href="#" class="kt-widget__username">
+                                            @Model.listaAutomobila[i].ProizvodjacModel
+                                        </a>
+
+                                        <span class="kt-widget__desc">
+                                            @Model.listaAutomobila[i].RegistarskaOznaka <br />
+                                            @Model.listaAutomobila[i].Transmisija
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="kt-widget__body">
+
+                                    <div class="kt-widget__item">
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Boja:</span>
+                                            <a href="#" class="kt-widget__data"> @Model.listaAutomobila[i].Boja</a>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Broj sjedišta:</span>
+                                            <a href="#" class="kt-widget__data">@Model.listaAutomobila[i].BrojSjedista</a>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Broj vrata:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].BrojVrata</span>
+                                        </div>
+
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Godina proizvodnje:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].GodinaProizvodnje</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Gorivo:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].Gorivo</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Kubikaža:</span>
+                                            <span class="kt-widget__data">@Math.Round(System.Convert.ToDecimal(Model.listaAutomobila[i].Kubikaza), 2)</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Potrošnja:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].Potrosnja l/100km</span>
+                                        </div>
+
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Cijena iznajmljivanja:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].CijenaIznajmljivanja KM</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Cijena kasko:</span>
+                                            <span class="kt-widget__data">@Model.listaAutomobila[i].CijenaKaskoOsiguranja KM</span>
+                                        </div>
+                                        <div class="kt-widget__contact">
+                                            <span class="kt-widget__label">Prosječna ocjena:</span>
+                                            @if (Model.listaAutomobila[i].ProsjecnaOcjena != 0)
+                                            {
+                                                <span class="kt-widget__data">@Model.listaAutomobila[i].ProsjecnaOcjena.ToString("0.0")</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="kt-widget__data">Nema ocjena!</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @if (@Model.listaAutomobila[i].Dostupan == true)
+                                {
+                                    <div class="kt-widget__footer">
+                                        <a href="/Rezervacija/Rezervisi?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Rezerviši</a>
+                                    </div>
+                                    @*<div class="kt-widget__footer">
+                                            <a href="/Rezervacija/Detalji?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Detalji</a>
+                                        </div>*@
+                                }
+                                else
+                                {
+                                    @*<div class="kt-widget__footer">
+                                            <a href="/Rezervacija/Detalji?AutomobilID=@Model.listaAutomobila[i].AutomobilId" type="button" class="btn btn-label-warning btn-lg btn-upper">Detalji</a>
+                                        </div>*@
+                                }
+                            </div>
+                            <!--end::Widget -->
+                        </div>
+                    </div>
+                    <!--End::Portlet-->
+                </div>
+            }
+
+        }
+        @Html.Raw(@"</div>")
+    </div>
+</div>
+

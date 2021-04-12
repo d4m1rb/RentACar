@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Poruke.ListaPorukaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+     xmlns:viewModel="clr-namespace:RentACarApp.MobileUI.ViewModels.Poruke"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates.Poruke"
+    x:Name="listaPorukaPage"
+    Title="Lista Poruka Page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.BindingContext>
+        <viewModel:ListaPorukaViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Lista poruka" Grid.Row="0">
+                <controls:TitleView.LeadingView>
+                    <buttons:SfButton
+                            Command="{Binding MenuCommand}"
+                            CornerRadius="4"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource BurgerMenu}" />
+                </controls:TitleView.LeadingView>
+            </controls:TitleView>
+
+            <Label x:Name="PorukaLabel" Grid.Row="1" Margin="10" Text="Nema poruka za odabranu rezervaciju!" IsVisible="False"></Label>
+            <!--  ListView for catalog list  -->
+            <listView:SfListView
+                x:Name="ListViewList"
+                Grid.Row="2"
+                Margin="{OnIdiom Default='0,8,8,0',
+                                 Desktop='15,15,15,0'}"
+                AutoFitMode="Height"
+                
+                HorizontalOptions="FillAndExpand"
+                IsStickyHeader="False"
+                ItemSize="170"
+                ItemSpacing="8,8,0,8"
+                ItemsSource="{Binding listaPoruka}"
+                 
+                Style="{StaticResource SfListViewStyle}">
+
+                <listView:SfListView.Behaviors>
+                    <commonBehavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference listaPorukaPage}}" />
+                </listView:SfListView.Behaviors>
+ 
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <template:ListaPorukaTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference listaPorukaPage}}" />
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+
+            </listView:SfListView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

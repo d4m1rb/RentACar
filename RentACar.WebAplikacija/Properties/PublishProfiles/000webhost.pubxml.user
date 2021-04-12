@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAFVbiqe+gwUKDLfDtrJoW/gAAAAACAAAAAAAQZgAAAAEAACAAAACP0l1J6CQjeBUpJG6ne9riMu86wVc6SoWIl7aV5pyalwAAAAAOgAAAAAIAACAAAACdRtyLKq1jPC+d9TFx3oit4zacNhxxOci6qwO458pavyAAAADNM7IUG94OijNGEigZrMZDt2F8h6fb97SKECbCC6FJXEAAAACPoCvTH8YwwdPNNOs8qMiYGDH1CojJLwOiQ3rw23pJikdn2zdqKw59KIZI6svbzdySGSUhPYdJXXoh+8OPKM12</EncryptedPassword>
+    <_PublishTargetUrl>ftp://files.000webhost.com/public_html</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Flurl.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Flurl.Http.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <publishTime>04/30/2018 16:29:02</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
+      <publishTime>09/24/2019 19:57:48</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll">
+      <publishTime>09/24/2019 19:57:52</publishTime>
+    </File>
+    <File Include="Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Win32.SystemEvents.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>11/09/2019 00:56:44</publishTime>
+    </File>
+    <File Include="NuGet.Frameworks.dll">
+      <publishTime>04/24/2018 21:27:10</publishTime>
+    </File>
+    <File Include="RentACarApp.Model.dll">
+      <publishTime>04/04/2020 12:40:52</publishTime>
+    </File>
+    <File Include="RentACarApp.Model.pdb">
+      <publishTime>04/04/2020 12:40:52</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.deps.json">
+      <publishTime>04/04/2020 15:20:20</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.dll">
+      <publishTime>04/04/2020 15:20:17</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.pdb">
+      <publishTime>04/04/2020 15:20:17</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.runtimeconfig.json">
+      <publishTime>04/04/2020 02:35:06</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.Views.dll">
+      <publishTime>04/04/2020 15:20:19</publishTime>
+    </File>
+    <File Include="RentACarApp.WebUI.Views.pdb">
+      <publishTime>04/04/2020 15:20:19</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll">
+      <publishTime>09/18/2018 19:38:14</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="System.Composition.AttributedModel.dll">
+      <publishTime>11/05/2016 04:55:42</publishTime>
+    </File>
+    <File Include="System.Composition.Convention.dll">
+      <publishTime>11/05/2016 04:55:42</publishTime>
+    </File>
+    <File Include="System.Composition.Hosting.dll">
+      <publishTime>11/05/2016 04:55:42</publishTime>
+    </File>
+    <File Include="System.Composition.Runtime.dll">
+      <publishTime>11/05/2016 04:55:44</publishTime>
+    </File>
+    <File Include="System.Composition.TypedParts.dll">
+      <publishTime>11/05/2016 04:55:46</publishTime>
+    </File>
+    <File Include="System.Drawing.Common.dll">
+      <publishTime>09/18/2018 19:38:14</publishTime>
+    </File>
+    <File Include="System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>09/18/2018 19:38:10</publishTime>
+    </File>
+    <File Include="System.Text.Encoding.CodePages.dll">
+      <publishTime>11/29/2018 15:39:20</publishTime>
+    </File>
+    <File Include="System.Web.Helpers.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="System.Web.Mvc.dll">
+      <publishTime>11/28/2018 12:59:46</publishTime>
+    </File>
+    <File Include="System.Web.Razor.dll">
+      <publishTime>11/28/2018 13:00:12</publishTime>
+    </File>
+    <File Include="System.Web.WebPages.Deployment.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="System.Web.WebPages.dll">
+      <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="System.Web.WebPages.Razor.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>04/04/2020 15:20:21</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>01/22/2020 23:48:41</publishTime>
+    </File>
+    <File Include="wwwroot/Login/css/main.css">
+      <publishTime>03/27/2020 16:49:46</publishTime>
+    </File>
+    <File Include="wwwroot/Login/css/util.css">
+      <publishTime>12/13/2017 15:44:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/css/font-awesome.css">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+      <publishTime>05/23/2017 17:43:54</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/fonts/FontAwesome.otf">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/HELP-US-OUT.txt">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/animated.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/bordered-pulled.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/core.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/fixed-width.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/icons.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/larger.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/list.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/mixins.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/path.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/rotated-flipped.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/screen-reader.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/stacked.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/less/variables.less">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/font-awesome.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_animated.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_fixed-width.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_icons.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_larger.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_list.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_path.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_rotated-flipped.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_screen-reader.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/font-awesome-4.7.0/scss/_stacked.scss">
+      <publishTime>05/23/2017 17:43:52</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Black.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-BlackItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Bold.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-BoldItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-ExtraBold.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-ExtraBoldItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-ExtraLight.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-ExtraLightItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Italic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Light.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-LightItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Medium.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-MediumItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-SemiBold.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-SemiBoldItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-Thin.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/Montserrat-ThinItalic.ttf">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/montserrat/OFL.txt">
+      <publishTime>12/13/2011 00:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Black.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-BlackItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Bold.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-BoldItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-ExtraBoldItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-ExtraLight.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-ExtraLightItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Italic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Light.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-LightItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Medium.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-MediumItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-SemiBoldItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-Thin.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/poppins/Poppins-ThinItalic.ttf">
+      <publishTime>06/03/2015 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/OFL.txt">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-Black.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-BlackItalic.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-Bold.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-BoldItalic.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-ExtraLightItalic.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-Medium.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-Thin.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/fonts/raleway/Raleway-ThinItalic.ttf">
+      <publishTime>09/07/2012 01:00:00</publishTime>
+    </File>
+    <File Include="wwwroot/Login/images/avatar-01.jpg">
+      <publishTime>12/18/2017 10:04:24</publishTime>
+    </File>
+    <File Include="wwwroot/Login/images/icons/favicon.ico">
+      <publishTime>01/21/2016 11:45:32</publishTime>
+    </File>
+    <File Include="wwwroot/Login/images/icons/icon-google.png">
+      <publishTime>12/17/2017 16:58:36</publishTime>
+    </File>
+    <File Include="wwwroot/Login/images/img-01.jpg">
+      <publishTime>12/18/2017 09:56:38</publishTime>
+    </File>
+    <File Include="wwwroot/Login/images/rentACar.jpg">
+      <publishTime>01/23/2020 12:19:57</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/css/skins/aside/dark.css">
+      <publishTime>01/25/2020 13:53:53</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/css/skins/brand/dark.css">
+      <publishTime>01/25/2020 13:53:30</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/css/skins/header/base/light.css">
+      <publishTime>01/25/2020 13:52:57</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/css/skins/header/menu/light.css">
+      <publishTime>01/25/2020 13:53:12</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/css/style.bundle.css">
+      <publishTime>01/25/2020 13:51:47</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/js/scripts.bundle.js">
+      <publishTime>01/25/2020 14:01:25</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css">
+      <publishTime>01/25/2020 13:50:23</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js">
+      <publishTime>01/25/2020 14:01:58</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/plugins/custom/gmaps/gmaps.js">
+      <publishTime>01/25/2020 14:02:27</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/plugins/global/plugins.bundle.css">
+      <publishTime>01/25/2020 13:51:28</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo1/dist/assets/plugins/global/plugins.bundle.js">
+      <publishTime>01/25/2020 14:01:10</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/css/pages/wizard/wizard-4.css">
+      <publishTime>03/12/2020 21:40:57</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/components/extended/sweetalert2.js">
+      <publishTime>03/05/2020 14:26:50</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js">
+      <publishTime>03/05/2020 18:15:52</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/forms/widgets/bootstrap-switch.js">
+      <publishTime>03/06/2020 19:28:50</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table-rezervacije.js">
+      <publishTime>03/17/2020 23:53:21</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table-vozila.js">
+      <publishTime>03/15/2020 20:45:12</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table.js">
+      <publishTime>03/09/2020 19:44:03</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table3.js">
+      <publishTime>03/09/2020 23:32:10</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table4.js">
+      <publishTime>03/15/2020 16:19:11</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/custom/user/add-user-klijent.js">
+      <publishTime>03/15/2020 17:33:07</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/custom/user/add-user.js">
+      <publishTime>03/14/2020 22:08:13</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/custom/user/edit-user.js">
+      <publishTime>03/10/2020 19:35:01</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/dashboard.js">
+      <publishTime>03/07/2020 13:55:20</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/js/scripts.bundle.js">
+      <publishTime>01/25/2020 14:38:21</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo1.jpg">
+      <publishTime>01/25/2020 14:52:15</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo10.jpg">
+      <publishTime>01/25/2020 14:52:47</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo11.jpg">
+      <publishTime>01/25/2020 14:52:51</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo12.jpg">
+      <publishTime>01/25/2020 14:52:54</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo13.jpg">
+      <publishTime>01/25/2020 14:52:57</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo14.jpg">
+      <publishTime>01/25/2020 14:53:01</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo15.jpg">
+      <publishTime>01/25/2020 14:53:05</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo16.jpg">
+      <publishTime>01/25/2020 14:53:08</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo17.jpg">
+      <publishTime>01/25/2020 14:53:12</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo18.jpg">
+      <publishTime>01/25/2020 14:53:15</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo2.jpg">
+      <publishTime>01/25/2020 14:52:18</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo22.jpg">
+      <publishTime>01/25/2020 14:53:29</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo3.jpg">
+      <publishTime>01/25/2020 14:52:22</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo4.jpg">
+      <publishTime>01/25/2020 14:52:26</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo5.jpg">
+      <publishTime>01/25/2020 14:52:30</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo6.jpg">
+      <publishTime>01/25/2020 14:52:33</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo7.jpg">
+      <publishTime>01/25/2020 14:52:36</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo8.jpg">
+      <publishTime>01/25/2020 14:52:41</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/demos/preview/demo9.jpg">
+      <publishTime>01/25/2020 14:52:44</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/flags/226-united-states.svg">
+      <publishTime>01/25/2020 14:32:22</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/logo-12.png">
+      <publishTime>01/25/2020 14:20:50</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/RentACar.png">
+      <publishTime>03/27/2020 16:03:59</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/RentACarLogin.png">
+      <publishTime>03/27/2020 16:28:20</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/logos/rentacar_icon.ico">
+      <publishTime>03/27/2020 16:17:27</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/misc/bg-1.jpg">
+      <publishTime>01/25/2020 14:48:40</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product10.jpg">
+      <publishTime>01/25/2020 14:35:50</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product11.jpg">
+      <publishTime>01/25/2020 14:35:57</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product13.jpg">
+      <publishTime>01/25/2020 14:49:14</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product15.jpg">
+      <publishTime>01/25/2020 14:35:44</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product16.jpg">
+      <publishTime>01/25/2020 14:49:20</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product22.jpg">
+      <publishTime>01/25/2020 14:35:36</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product4.jpg">
+      <publishTime>01/25/2020 14:50:45</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product6.jpg">
+      <publishTime>01/25/2020 14:36:05</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/products/product9.jpg">
+      <publishTime>01/25/2020 14:31:30</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/100_4.jpg">
+      <publishTime>01/25/2020 14:34:48</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/300_10.jpg">
+      <publishTime>03/12/2020 23:00:31</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/300_25.jpg">
+      <publishTime>01/25/2020 14:49:40</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/profile_pic.jpg">
+      <publishTime>03/12/2020 23:11:28</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/user1.jpg">
+      <publishTime>01/25/2020 14:35:14</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/user4.jpg">
+      <publishTime>01/25/2020 14:37:07</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/media/users/user5.jpg">
+      <publishTime>01/25/2020 14:37:02</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css">
+      <publishTime>01/25/2020 14:14:54</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js">
+      <publishTime>01/25/2020 14:38:34</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/custom/gmaps/gmaps.js">
+      <publishTime>01/25/2020 14:38:48</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-brands-400.eot">
+      <publishTime>01/25/2020 21:27:02</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-brands-400.ttf">
+      <publishTime>01/25/2020 21:28:07</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-brands-400.woff">
+      <publishTime>01/25/2020 21:27:44</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-brands-400.woff2">
+      <publishTime>01/25/2020 21:27:23</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-regular-400.eot">
+      <publishTime>01/25/2020 21:28:51</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-regular-400.ttf">
+      <publishTime>01/25/2020 21:29:47</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-regular-400.woff">
+      <publishTime>01/25/2020 21:29:16</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-regular-400.woff2">
+      <publishTime>01/25/2020 21:29:11</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-solid-900.woff">
+      <publishTime>01/25/2020 21:30:41</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/%40fortawesome/fa-solid-900.woff2">
+      <publishTime>01/25/2020 21:30:36</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon/Flaticon.eot">
+      <publishTime>01/25/2020 21:02:37</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon/Flaticon.svg">
+      <publishTime>01/25/2020 21:21:39</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon/Flaticon.ttf">
+      <publishTime>01/25/2020 21:03:53</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon/Flaticon.woff">
+      <publishTime>01/25/2020 21:00:39</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.eot">
+      <publishTime>01/25/2020 21:06:16</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.svg">
+      <publishTime>01/25/2020 21:21:58</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.ttf">
+      <publishTime>01/25/2020 21:07:08</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/flaticon2/Flaticon2.woff">
+      <publishTime>01/25/2020 21:06:47</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/line-awesome/line-awesome.eot">
+      <publishTime>01/25/2020 21:25:24</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/line-awesome/line-awesome.ttf">
+      <publishTime>01/25/2020 21:26:24</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/line-awesome/line-awesome.woff2">
+      <publishTime>01/25/2020 21:25:53</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/socicon/socicon.eot">
+      <publishTime>01/25/2020 21:24:09</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/socicon/socicon.ttf">
+      <publishTime>01/25/2020 21:24:55</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/summernote/summernote.eot">
+      <publishTime>01/25/2020 21:33:08</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/summernote/summernote.ttf">
+      <publishTime>01/25/2020 21:33:58</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/fonts/summernote/summernote.woff">
+      <publishTime>01/25/2020 21:33:33</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/plugins.bundle.css">
+      <publishTime>01/25/2020 14:15:17</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/plugins.bundle.js">
+      <publishTime>01/25/2020 14:38:03</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/pages/dashboard/index.html">
+      <publishTime>01/25/2020 14:13:28</publishTime>
+    </File>
+    <File Include="wwwroot/metronic/themes/metronic/theme/default/demo12/pages/dashboard/index.mhtml">
+      <publishTime>01/25/2020 14:13:11</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

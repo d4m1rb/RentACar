@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Rezervacije.OcijeniRezervacijuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:Behaviors="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:Validators="clr-namespace:RentACarApp.MobileUI.Validators.Implementations"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"    
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates"
+    xmlns:control="clr-namespace:RentACarApp.MobileUI.Controls"
+    x:Name="ocijeniRezervacijuPage"
+    Title="Ocijeni Rezervaciju page"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DatetimeToStringConverter x:Key="cnvDateTimeConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            
+          <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+               
+            
+            <!--  Title View  -->
+            <controls:TitleView Title="Unos ocjene" Grid.Row="0">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BackButtonCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+
+            
+            <StackLayout Grid.Row="1" Margin="70,20,70,0" Orientation="Vertical">
+                    <StackLayout.Behaviors>
+                        <Behaviors:ValidationGroupBehavior x:Name="form"/>
+                    </StackLayout.Behaviors>
+
+
+                    <Label Text="Ocjena" FontAttributes="Bold"></Label>
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference OcjenaPicker}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessPicker 
+                        x:Name="OcjenaPicker"                                             
+                        Title="{Binding OcjenaString}"
+                        ItemsSource="{Binding ListaOcjena}"                                               
+                        
+                        SelectedItem="{Binding SelectedOcjena}"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="Black"
+                        FontSize="14">
+
+                        </control:BorderlessPicker>
+                    </border:SfBorder>
+
+
+                    <Label Text="Napomena" FontAttributes="Bold"></Label>
+                <!--<Entry x:Name="ime" IsReadOnly="False" Placeholder="Ime" FontSize="Small" Text="{Binding Ime}"></Entry>-->
+
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference NapomenaEditor}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+
+                        <Editor Text="{Binding Napomena}" 
+                                x:Name="NapomenaEditor"
+                       HeightRequest="150" BackgroundColor="Transparent" FontSize="Small"></Editor>
+                    </border:SfBorder>
+
+                    <buttons:SfButton  
+                        x:Name="btnSnimi"
+                        Style="{StaticResource RoundButtonStyle}"
+                        TextColor="{DynamicResource Gray-White}"
+                        WidthRequest="1500"
+                        Text="Sačuvaj" Margin="50,10,50,50" Clicked="btnSacuvaj_Clicked"></buttons:SfButton>
+            </StackLayout>
+
+            
+        </Grid>
+       </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

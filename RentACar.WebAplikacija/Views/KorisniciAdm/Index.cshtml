@@ -1,0 +1,239 @@
+﻿@model RentACar.WebAplikacija.ViewModels.KorisniciAdmVM
+@{
+    ViewData["Title"] = "Lista korisnika";
+    Layout = "~/Views/Shared/_LayoutTemplateAdmin.cshtml";
+    var poruka = (string)TempData["Poruka"];
+    var porukaObrisan = (string)TempData["PorukaObrisan"];
+}
+
+@section Scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+                $("#KorisniciListItem").addClass("kt-menu__item--active");
+                $("#KorisnikGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#KorisnikSporedniMeniDiv").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("KorisnikGlavniMeni").style = "";
+                document.getElementById("KorisnikSporedniMeniDiv").style = "";
+            });
+        });
+    </script>
+
+
+
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table3.js" type="text/javascript"></script>
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/components/extended/sweetalert2.js" type="text/javascript" aria-hidden="true"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var NaslovRed = $('[data-field="Dregistracije"] > span')[0];
+            NaslovRed.innerHTML = "Dat. registracije";
+
+            NaslovRed = $('[data-field="Drođenja"] > span')[0];
+            NaslovRed.innerHTML = "Dat. rođenja";
+        });
+    </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            @if (!String.IsNullOrEmpty(poruka)) {
+                @:swal.fire({ title: "", text: "@poruka", type: "warning", confirmButtonClass: "btn btn-secondary" });
+            };
+
+            @if (!String.IsNullOrEmpty(porukaObrisan)) {
+                @:swal.fire("Obrisano!", "@porukaObrisan", "success");
+            };
+        });
+    </script>
+
+    <script>
+
+        otvoriStranicu = function (id) {            
+            window.location = $('#' + id).attr('href');            
+        };
+
+        otvoriDijalogZaBrisanje = function (e, id) {
+            
+            e.preventDefault();
+
+            swal.fire({
+                title: "Da li ste sigurni da želite obrisati korisnika?",
+                text: "Podaci o korisniku se neće moći vratiti nazad!",
+                type: "warning",
+                showCancelButton: !0,
+                confirmButtonText: "Da, obriši!",
+                cancelButtonText: "Ne, odustani!",
+                reverseButtons: !0
+            }).then(function (e) {
+                e.value ? otvoriStranicu(id) : "cancel" === e.dismiss && swal.fire("Odustali ste!", "Korisnik nije obrisan.", "error")
+            })           
+        };          
+       
+    </script>
+}
+
+
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- end:: Subheader -->
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <span class="kt-portlet__head-icon">
+                        <i class="kt-font-brand fa fa-user-tie"></i>
+                    </span>
+                    <h3 class="kt-portlet__head-title">
+                        Lista korisnika
+                        <small>Pregledajte sve korisnike</small>
+                    </h3>
+                </div>
+
+            </div>
+
+            <div class="kt-portlet__body">
+                <!--begin: Search Form -->
+                <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 order-2 order-xl-1">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-input-icon kt-input-icon--left">
+                                        <input type="text" class="form-control" placeholder="Pretraži..." id="generalSearch">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Status:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_status">
+                                                <option value="">Odaberite</option>
+                                                <option value="0">Neaktivan</option>
+                                                <option value="1">Aktivan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-4 order-1 order-xl-2 kt-align-right">
+                            <a href="#" class="btn btn-default kt-hidden">
+                                <i class="la la-cart-plus"></i> New Order
+                            </a>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg d-xl-none"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search Form -->
+            </div>
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <!--begin: Datatable -->
+                <table class="kt-datatable" id="html_table" width="100%">
+                    <thead>
+                        <tr>
+                            <th title="Field #1">Korisnik ID</th>
+                            <th title="Field #2">Ime i prezime</th>
+                            <th title="Field #3">Grad</th>
+                            <th title="Field #4">Username</th>
+                            <th title="Field #5">Dregistracije</th>
+                            <th title="Field #6">Drođenja</th>
+                            <th title="Field #7">Status</th>
+                            <th title="Field #8">Uloge</th>
+                            <th title="Field #9">Akcija</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < @Model.listaKorisnika.Count(); i++)
+                        {
+                            <tr>
+                                <td>@Model.listaKorisnika[i].KorisnikId</td>
+                                <td>@Model.listaKorisnika[i].ImePrezime</td>
+                                <td>@Model.listaKorisnika[i].NazivGrada</td>
+                                <td>@Model.listaKorisnika[i].UserName</td>
+                                <td>@Model.listaKorisnika[i].DatumRegistracije.ToString("dd-MM-yyyy")</td>
+                                <td>@Model.listaKorisnika[i].DatumRodjenja.Value.ToString("dd-MM-yyyy")</td>
+                                <td align="right">@(Model.listaKorisnika[i].Status ? 1 : 0)</td>
+                                <td>@Model.listaKorisnika[i].listaUlogaString</td>
+
+
+                                <td data-field="Actions" data-autohide-disabled="false" class="kt-datatable__cell">
+                                    <span style="overflow: visible; position: relative; width: 110px;">
+                                        <div class="dropdown" bis_skin_checked="1">
+                                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">
+                                                <i class="la la-ellipsis-h"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" bis_skin_checked="1">
+                                                <a class="dropdown-item" href="/KorisniciAdm/Uredi?KorisnikID=@Model.listaKorisnika[i].KorisnikId">
+                                                    <i class="la la-edit"></i> Detalji
+                                                </a>
+                                                <a class="dropdown-item" href="/KorisniciAdm/Obrisi?KorisnikID=@Model.listaKorisnika[i].KorisnikId" id="obrisiBtnDropDown@(i)" onclick="otvoriDijalogZaBrisanje(event,'obrisiBtnDropDown@(i)');">
+                                                    <i class="la la-trash"></i> Obriši
+                                                </a>
+                                                @if (@Model.listaKorisnika[i].Status == true)
+                                                {
+                                                    <a class="dropdown-item" href="/KorisniciAdm/Deaktiviraj?KorisnikID=@Model.listaKorisnika[i].KorisnikId">
+                                                        <i class="fa fa-user-times"></i> Deaktiviraj
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="dropdown-item" href="/KorisniciAdm/Aktiviraj?KorisnikID=@Model.listaKorisnika[i].KorisnikId">
+                                                        <i class="fa fa-user-check"></i> Aktiviraj
+                                                    </a>
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <a href="/KorisniciAdm/Uredi?KorisnikID=@Model.listaKorisnika[i].KorisnikId" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Detalji">
+                                            <i class="la la-edit"></i>
+                                        </a>
+                                        <a href="/KorisniciAdm/Obrisi?KorisnikID=@Model.listaKorisnika[i].KorisnikId" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Obriši" id="obrisiBtn@(i)" onclick="otvoriDijalogZaBrisanje(event,'obrisiBtn@(i)');">
+                                            <i class="la la-trash"></i>
+                                        </a>
+                                    </span>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <!--end: Datatable -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Content -->
+</div>
+

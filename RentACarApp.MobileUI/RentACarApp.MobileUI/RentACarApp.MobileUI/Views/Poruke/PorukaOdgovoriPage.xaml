@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Poruke.PorukaOdgovoriPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates"
+    x:Name="porukaOdgovoriPage"
+    Title="Poruka Odgovori page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Odgovor na poruku" Grid.Row="0">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BackButtonCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+            
+            <StackLayout Grid.Row="1" Margin="100,20,100,0">
+                <!--<Label Text="Pošiljalac" FontAttributes="Bold"></Label>
+                <Label Text="{Binding PrimaocInfo}" HorizontalOptions="End"></Label>-->
+
+                <Label Margin="0,20,0,0" Text="Primalac" FontAttributes="Bold"></Label>
+                <Label Text="{Binding PosiljaocInfo}" HorizontalOptions="Center"></Label>
+
+                <Label Margin="0,20,0,0" Text="Poruka" FontAttributes="Bold"></Label>
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference SadrzajEditor}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        
+                        <Editor Text="{Binding Sadrzaj}" 
+                                x:Name="SadrzajEditor"
+                       HeightRequest="150" BackgroundColor="Transparent" FontSize="Small"></Editor>
+                    </border:SfBorder>
+
+                    <buttons:SfButton x:Name="btnPosalji" Text="Pošalji" Margin="50,10,50,0" Clicked="btnPosalji_Clicked" CommandParameter="{Binding PorukaId}"></buttons:SfButton>
+            </StackLayout>
+            
+
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

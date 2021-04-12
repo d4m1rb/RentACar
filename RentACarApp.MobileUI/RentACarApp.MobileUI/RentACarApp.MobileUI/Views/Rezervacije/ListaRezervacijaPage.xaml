@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Rezervacije.ListaRezervacijaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates.Rezervacije"
+    x:Name="reservationListPage"
+    Title="Reservation List page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DatetimeToStringConverter x:Key="cnvDateTimeConverter"/>
+            <converter:ImageConverter x:Key="imgConv"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="sl">
+            <Grid  RowSpacing="0" ColumnSpacing="0" BackgroundColor="LightGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--  Title View  -->
+
+                <controls:TitleView Title="Moje rezervacije" Grid.Row="0">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            Command="{Binding MenuCommand}"
+                            CornerRadius="4"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource BurgerMenu}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+
+
+                <StackLayout Grid.Row="1" BackgroundColor="White">
+                    <Grid RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    
+                    <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
+                        <Label Text="Završene rezervacije" BackgroundColor="White"
+                       TextColor="Black"
+                  
+                   FontSize="14"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="End"
+                       ></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1">
+                        <Switch BackgroundColor="White"
+                    
+                    OnColor="Green"
+                    Toggled="Switch_Toggled"
+                    
+                    HorizontalOptions="End"
+                    ></Switch>
+                    </StackLayout>
+
+                    </Grid>
+                </StackLayout>         
+
+                <!--  ListView for UToku list  -->                
+                <listView:SfListView
+                    Grid.Row="2"                     
+                IsVisible="True"
+                    BackgroundColor="LightGray"
+                    Margin="0,0,0,8"
+                x:Name="UTokuRezervacije"
+                ItemTapped="UTokuRezervacije_ItemTapped"
+               AutoFitMode="None"
+                HorizontalOptions="FillAndExpand"
+                ItemSize="130"
+                ItemSpacing="0,0,0,0"
+                    HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
+                    IsStickyHeader="True"
+                ItemsSource="{Binding RezervacijeRetanjaList}"
+                 
+                Style="{StaticResource SfListViewStyle}"> 
+                    <listView:SfListView.Behaviors>
+                        <commonBehavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference reservationListPage}}" />
+                    </listView:SfListView.Behaviors>
+
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <template:ListaRezervacijaTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference reservationListPage}}" />
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>                   
+                </listView:SfListView>
+                    
+               
+
+                <!--  ListView for Zavrsene list  -->
+               
+                <listView:SfListView
+                    Grid.Row="2"
+                    BackgroundColor="LightGray"
+                IsVisible="False"
+                x:Name="ZavrseneRezervacije"
+                Margin="{OnIdiom Default='0,0,0,8',
+                                 Desktop='15,15,15,0'}"
+                AutoFitMode="None"
+               ItemTapped="ZavrseneRezervacije_ItemTapped"
+                HorizontalOptions="FillAndExpand"
+                HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
+                IsStickyHeader="true"
+                ItemSize="130"
+                ItemSpacing="0,0,0,0"
+                ItemsSource="{Binding RezervacijeRetanjaListZavrsene}"
+                 
+                Style="{StaticResource SfListViewStyle}">
+
+                    <listView:SfListView.Behaviors>
+                        <commonBehavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference reservationListPage}}" />
+                    </listView:SfListView.Behaviors>
+
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <template:ListaRezervacijaTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference reservationListPage}}" />
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>                    
+                </listView:SfListView>
+               
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

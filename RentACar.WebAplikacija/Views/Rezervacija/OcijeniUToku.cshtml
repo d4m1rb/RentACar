@@ -1,0 +1,110 @@
+﻿
+@model RentACar.WebAplikacija.ViewModels.RezervacijeOcijeniVM
+@{
+    ViewData["Title"] = "Ocijeni rezervaciju";
+    Layout = "_LayoutTemplate";
+
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+                $("#ZavrseneRezervacijeListItem").addClass("kt-menu__item--open");
+                $("#RezervacijaGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#RezervacijaSporedniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("RezervacijaGlavniMeniDiv").style = ""; 
+                document.getElementById("RezervacijaSporedniMeniDiv").style = "";   
+            });
+        });
+    </script>
+}
+
+
+<div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+
+
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" bis_skin_checked="1">
+        <div class="kt-container  kt-container--fluid " bis_skin_checked="1">
+            <div class="kt-subheader__main" bis_skin_checked="1">
+                <h3 class="kt-subheader__title">Ocjena rezervacije</h3>
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+
+            </div>
+            <div class="kt-subheader__toolbar" bis_skin_checked="1">
+
+            </div>
+        </div>
+    </div>
+    <!-- end:: Subheader -->
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" bis_skin_checked="1">
+
+
+        <!--begin::Portlet-->
+        <div class="kt-portlet" bis_skin_checked="1">
+            <div class="kt-portlet__head" bis_skin_checked="1">
+                <div class="kt-portlet__head-label" bis_skin_checked="1">
+                    <h3 class="kt-portlet__head-title">Odaberite ocjenu iz padajućeg menija</h3>
+                </div>
+            </div>
+            <!--begin::Form-->
+            <form class="kt-form kt-form--label-right" asp-action="SnimiOcjenuNezapocete" method="post">
+                <div class="kt-portlet__body" bis_skin_checked="1">
+
+                    <div class="form-group row" bis_skin_checked="1">
+                        <label class="col-form-label col-lg-3 col-sm-12">Ocjena</label>
+                        <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                            <div class="input-group" bis_skin_checked="1">
+                                <select asp-for="@Model.Ocjena" type="text" class="form-control" id="ocjenaSelect" name="ocjena">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12" for="napomenaTextArea"> Napomena </label>
+                        <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                            <textarea asp-for="@Model.Napomena" class="form-control" id="napomenaTextArea" name="napomena" rows="3" style="margin-top: 0px; margin-bottom: 0px; height: 96px;"></textarea>
+                        </div>
+                    </div>
+
+                    <input asp-for="@Model.RezervacijaRentanjaId" type="text" value="@Model.RezervacijaRentanjaId" readonly hidden />
+
+                </div>
+                <div class="kt-portlet__foot" bis_skin_checked="1">
+                    <div class="kt-form__actions" bis_skin_checked="1">
+                        <div class="row" bis_skin_checked="1">
+                            <div class="col-lg-9 ml-lg-auto" bis_skin_checked="1">
+                                <button type="submit" class="btn btn-brand">Sačuvaj ocjenu</button>
+                                <a href="/" class="btn btn-secondary">Odustani</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+        <!--end::Portlet-->
+    </div>
+    <!-- end:: Content -->
+    ;
+</div>
+

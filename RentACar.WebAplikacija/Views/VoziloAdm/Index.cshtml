@@ -1,0 +1,253 @@
+﻿@model RentACar.WebAplikacija.ViewModels.VoziloAdmVM
+@{
+    ViewData["Title"] = "Lista vozila";
+    Layout = "~/Views/Shared/_LayoutTemplateAdmin.cshtml";
+    var poruka = (string)TempData["Poruka"];
+}
+
+
+@section Scripts
+{
+
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+                $("#VozilaListItem").addClass("kt-menu__item--active");
+                $("#VoziloGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#VoziloSporedniMeniDiv").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("VoziloGlavniMeni").style = "";
+                document.getElementById("VoziloSporedniMeniDiv").style = "";
+            });
+        });
+    </script>
+
+
+
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/metronic-datatable/base/html-table-vozila.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var NaslovRed = $('[data-field="Roznake"] > span')[0];
+            NaslovRed.innerHTML = "Reg. oznake";
+
+            NaslovRed = $('[data-field="RegDo"] > span')[0];
+            NaslovRed.innerHTML = "Registrovan do";
+        });
+    </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            @if (!String.IsNullOrEmpty(poruka)) {
+                @:swal.fire({ title: "", text: "@poruka", type: "warning", confirmButtonClass: "btn btn-secondary" });
+
+            };
+        });
+    </script>
+}
+
+
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- end:: Subheader -->
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <span class="kt-portlet__head-icon">
+                        <i class="kt-font-brand fa fa-car"></i>
+                    </span>
+                    <h3 class="kt-portlet__head-title">
+                        Lista vozila
+                        <small>Pregledajte sva vozila</small>
+                    </h3>
+                </div>
+
+            </div>
+
+            <div class="kt-portlet__body">
+                <!--begin: Search Form -->
+                <div class="kt-form kt-form--label-right kt-margin-t-20 kt-margin-b-10">
+                    <div class="row align-items-center">
+                        <div class="col-xl-11 order-2 order-xl-1">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-input-icon kt-input-icon--left">
+                                        <input type="text" class="form-control" placeholder="Pretraži..." id="generalSearch">
+                                        <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Status:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_status">
+                                                <option value="">Odaberite</option>
+                                                <option value="0">Nedostupno</option>
+                                                <option value="1">Dostupno</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Gorivo:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_gorivo">
+                                                <option value="">Odaberite</option>
+                                                <option value="Benzin">Benzin</option>
+                                                <option value="Dizel">Dizel</option>
+                                                <option value="Plin">Plin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 kt-margin-b-20-tablet-and-mobile">
+                                    <div class="kt-form__group kt-form__group--inline">
+                                        <div class="kt-form__label">
+                                            <label>Transmisija:</label>
+                                        </div>
+                                        <div class="kt-form__control">
+                                            <select class="form-control bootstrap-select" id="kt_form_transmisija">
+                                                <option value="">Odaberite</option>
+                                                <option value="Automatic">Automatic</option>
+                                                <option value="Manual">Manual</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-4 order-1 order-xl-2 kt-align-right">
+                            <a href="#" class="btn btn-default kt-hidden">
+                                <i class="la la-cart-plus"></i> New Order
+                            </a>
+                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg d-xl-none"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search Form -->
+            </div>
+            <div class="kt-portlet__body kt-portlet__body--fit">
+                <!--begin: Datatable -->
+                <table class="kt-datatable" id="html_table" width="100%">
+                    <thead>
+                        <tr>
+
+                            <th title="Field #1">Naziv</th>
+                            <th title="Field #2">Boja</th>
+                            <th title="Field #3">Godište</th>
+                            <th title="Field #4">Registarske oznake</th>
+                            <th title="Field #5">Registrovan do</th>
+                            <th title="Field #6">Cijena iznajmljivanja</th>
+                            <th title="Field #7">Transmisija</th>
+                            <th title="Field #8">Gorivo</th>
+                            <th title="Field #9">Status</th>
+                            <th title="Field #10">Akcija</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < @Model.listaVozila.Count(); i++)
+                        {
+                        <tr>
+
+                            <td>@Model.listaVozila[i].ProizvodjacModel</td>
+                            <td>@Model.listaVozila[i].Boja</td>
+                            <td>@Model.listaVozila[i].GodinaProizvodnje</td>
+                            <td>@Model.listaVozila[i].RegistarskaOznaka</td>
+                            <td>@Model.listaVozila[i].RegistrovanDo.Value.ToString("dd-MM-yyyy")</td>
+                            <td>@Model.listaVozila[i].CijenaIznajmljivanja KM</td>
+                            <td>@Model.listaVozila[i].Transmisija</td>
+                            <td>@Model.listaVozila[i].Gorivo</td>
+                            <td align="right">@(Model.listaVozila[i].Dostupan ? 1 : 0)</td>
+
+
+                            <td data-field="Actions" data-autohide-disabled="false" class="kt-datatable__cell">
+                                <span style="overflow: visible; position: relative; width: 110px;">
+                                    <div class="dropdown" bis_skin_checked="1">
+                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">
+                                            <i class="la la-ellipsis-h"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" bis_skin_checked="1">
+                                            <a class="dropdown-item" href="/VoziloAdm/Uredi?VoziloID=@Model.listaVozila[i].AutomobilId">
+                                                <i class="la la-edit"></i> Detalji
+                                            </a>
+
+                                            @if (@Model.listaVozila[i].Dostupan == true)
+                                            {
+                                                <a class="dropdown-item" href="/VoziloAdm/PostaviStatusNedostupan?VoziloID=@Model.listaVozila[i].AutomobilId">
+                                                    <i class="fa fa-window-close"></i> Postavi vozilo kao nedostupno
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="dropdown-item" href="/VoziloAdm/PostaviStatusDostupan?VoziloID=@Model.listaVozila[i].AutomobilId">
+                                                    <i class="fa fa-check-square"></i> Postavi vozilo kao dostupno
+                                                </a>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <a href="/VoziloAdm/Uredi?VoziloID=@Model.listaVozila[i].AutomobilId" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Detalji">
+                                        <i class="la la-edit"></i>
+                                    </a>
+                                    @if (@Model.listaVozila[i].Dostupan == true)
+                                    {
+                                        <a href="/VoziloAdm/PostaviStatusNedostupan?VoziloID=@Model.listaVozila[i].AutomobilId" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Postavi kao nedostupno">
+                                            <i class="fa fa-window-close"></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/VoziloAdm/PostaviStatusDostupan?VoziloID=@Model.listaVozila[i].AutomobilId" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Postavi kao dostupno">
+                                            <i class="fa fa-check-square"></i>
+                                        </a>
+                                    }
+                                </span>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+                <!--end: Datatable -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Content -->
+</div>
+

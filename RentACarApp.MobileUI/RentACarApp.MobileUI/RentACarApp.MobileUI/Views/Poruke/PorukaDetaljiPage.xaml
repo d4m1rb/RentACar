@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Poruke.PorukaDetaljiPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:converters="clr-namespace:RentACarApp.MobileUI.Converters;assembly=RentACarApp.MobileUI"
+    xmlns:detailBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Detail"
+     xmlns:viewModel="clr-namespace:RentACarApp.MobileUI.ViewModels.Poruke"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:local="clr-namespace:RentACarApp.MobileUI.Views.Poruke"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+    x:Name="porukaDetaljiPage"
+    Title="Poruka Detalji Page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <detailBehavior:CartBehavior />
+    </ContentPage.Behaviors>
+    
+    <ContentPage.BindingContext>
+        <viewModel:PorukaDetaljiViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StylesDetalji.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--<DataTemplate x:Key="PortraitTemplate">
+                <Image
+                    Margin="3"
+                    Aspect="{OnIdiom Default=AspectFill,
+                                     Tablet=AspectFit}"
+                    BackgroundColor="{DynamicResource Gray-200}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image.Source>
+                        <UriImageSource
+                            CacheValidity="14"
+                            CachingEnabled="true"
+                            Uri="{Binding .}" />
+                    </Image.Source>
+                </Image>
+            </DataTemplate>
+
+            <DataTemplate x:Key="LandscapeTemplate">
+                <Image
+                    Margin="3"
+                    Aspect="AspectFill"
+                    BackgroundColor="{DynamicResource Gray-200}"
+                    HeightRequest="350"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image.Source>
+                        <UriImageSource
+                            CacheValidity="14"
+                            CachingEnabled="true"
+                            Uri="{Binding .}" />
+                    </Image.Source>
+                </Image>
+            </DataTemplate>-->
+
+            <ControlTemplate x:Key="DefaultTemplate">
+                <ScrollView>
+                    <ContentPresenter />
+                </ScrollView>
+            </ControlTemplate>
+
+            <converter:BooleanToColorConverter x:Key="BoolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="BoolToStringConverter" />
+            <converter:VisibilityConverter x:Key="VisibilityConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+
+                <!--  Title View  -->
+                <controls:TitleView Title="Detalji poruke">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+
+                   
+                </controls:TitleView>
+
+                <ContentPresenter />
+ 
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+
+    <ContentPage.Content>
+        <ContentView ControlTemplate="{StaticResource DefaultTemplate}">
+            <Grid
+                Margin="{OnIdiom Default=0,
+                                 Desktop='24,24,24,0'}"
+                Padding="{OnIdiom Default=0,
+                                  Desktop=16}"
+                BackgroundColor="{OnIdiom Desktop={DynamicResource Gray-White},
+                                          Converter={StaticResource DynamicResourceToColorConverter}}"
+                ColumnSpacing="{OnIdiom Default=0,
+                                        Desktop=16}"
+                RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="{OnIdiom Phone=10, Tablet=500, Desktop=*}"/>
+                    <RowDefinition Height="{OnIdiom Default=*, Desktop=0}" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{OnIdiom Desktop=0.4*, Default=*}" />
+                    <ColumnDefinition Width="{OnIdiom Desktop=0.6*, Default=0}" />
+                </Grid.ColumnDefinitions>                              
+                
+                
+                <ContentView
+                    Grid.Row="{OnIdiom Default=1,
+                                       Desktop=0}"
+                    Grid.Column="{OnIdiom Default=0,
+                                          Desktop=1}"
+                    ControlTemplate="{OnIdiom Desktop={StaticResource DesktopDetailTemplate}}">
+                    <Grid
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        ColumnSpacing="0"
+                        RowSpacing="0">
+ 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{OnIdiom Default=16, Desktop=0}" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="16" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Label 
+                          
+                            Margin="{OnIdiom Phone='0,0,0,0',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Poruka od uposlenika"
+                            TextColor="{DynamicResource Gray-900}" />
+                        <Label
+                           
+                            Margin="{OnIdiom Phone='0,0,0,30',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaUposlenik.PosiljaocInfo}"
+                            TextColor="{DynamicResource Gray-900}" />
+                        </StackLayout>
+                        <Image    
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HeightRequest="130"
+                             Source="{Binding PorukaUposlenik.PosiljaocSlikaThumb, Converter={StaticResource imgConv}}"         
+                            />                        
+                      
+                        <!--  Product Name  -->
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="{OnIdiom Phone='0,30,0,2',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaUposlenik.Naslov}"
+                            TextColor="{DynamicResource Gray-900}" />
+                        
+                        <!--  Product Summary  -->
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            FontFamily="{DynamicResource Montserrat-Medium}"
+                            FontSize="14"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="2"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaUposlenik.Sadrzaj}" />
+
+                        
+
+
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="{OnIdiom Phone='0,0,0,10',
+                                             Tablet='0,13,0,10',
+                                             Desktop=0}"
+                            Orientation="Horizontal"
+                            Spacing="2">
+
+                            <!--  Product Price  -->
+                            <Label
+                                FontFamily="{StaticResource Montserrat-SemiBold}"
+                                FontSize="{OnIdiom Default=20,
+                                                   Desktop=24}"
+                                Style="{StaticResource LabelStyle}"
+                                Text="{Binding CijenaIznajmljivanja, StringFormat='{0:0 } KM'}"
+                                TextColor="{DynamicResource PrimaryColor}" />
+
+                           
+
+                        </StackLayout>
+
+                       
+
+                        <BoxView
+                            Grid.Row="{OnIdiom Default=5,
+                                               Phone=4}"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            HeightRequest="{OnIdiom Tablet=24,
+                                                    Desktop=8,
+                                                    Phone=16}"
+                            Style="{StaticResource BoxViewStyle}"
+                            Color="{OnIdiom Default={DynamicResource Gray-100},
+                                            Desktop={DynamicResource Gray-White},
+                                            Converter={StaticResource DynamicResourceToColorConverter}}" />
+
+                       
+
+                        <BoxView
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="5"
+                            HeightRequest="{OnIdiom Tablet=24,
+                                                    Default=0}"
+                            Style="{StaticResource BoxViewStyle}"
+                            Color="{OnIdiom Default={DynamicResource Gray-100},
+                                            Desktop={DynamicResource Gray-White},
+                                            Converter={StaticResource DynamicResourceToColorConverter}}" />
+
+                        <StackLayout
+                            Grid.Row="{OnIdiom Default=4,
+                                               Phone=12}"
+                            Grid.Column="{OnIdiom Default=1,
+                                                  Phone=0}"
+                            Grid.ColumnSpan="{OnIdiom Default=4,
+                                                      Phone=5}"
+                            Padding="0,16"
+                            BackgroundColor="{OnIdiom Default={DynamicResource Gray-White},
+                                                      Phone={DynamicResource Gray-100},
+                                                      Converter={StaticResource DynamicResourceToColorConverter}}"
+                            Orientation="Horizontal"
+                            Spacing="10">
+
+                            
+
+                            <!--  OK Button  -->
+                            <buttons:SfButton
+                                Margin="{OnIdiom Default=0,
+                                                 Phone='40,0'}"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                BorderColor="{DynamicResource PrimaryColor}"
+                                BorderWidth="1"
+                                x:Name="OkButton"
+                                Clicked="OkButton_Clicked"
+                                CommandParameter="{Binding RezervacijaId}"
+                                FontFamily="{StaticResource Montserrat-SemiBold}"
+                                HeightRequest="44"
+                                HorizontalOptions="{OnIdiom Default=Center,
+                                                            Phone=FillAndExpand}"
+                                Style="{StaticResource RoundButtonStyle}"
+                                Text="OK"
+                                TextColor="{DynamicResource Gray-White}"
+                                WidthRequest="{OnIdiom Default=200,
+                                                       Phone=-1}" />
+                        </StackLayout>
+
+
+                        <StackLayout Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3">
+                            <Label 
+                          
+                            Margin="{OnIdiom Phone='0,0,0,0',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="Poruka od klijenta"
+                            TextColor="{DynamicResource Gray-900}" />
+                            <Label
+                           
+                            Margin="{OnIdiom Phone='0,0,0,30',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaKlijent.PosiljaocInfo}"
+                            TextColor="{DynamicResource Gray-900}" />
+                        </StackLayout>
+                        <Image    
+                            Grid.Row="9"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            HeightRequest="130"
+                             Source="{Binding PorukaKlijent.PosiljaocSlikaThumb, Converter={StaticResource imgConv}}"         
+                            />
+
+                        <!--  Product Name  -->
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Margin="{OnIdiom Phone='0,30,0,2',
+                                             Desktop='0,8,0,0',
+                                             Tablet='0,16,0,0'}"
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="1"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaKlijent.Naslov}"
+                            TextColor="{DynamicResource Gray-900}" />
+
+                        <!--  Product Summary  -->
+                        <Label
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            FontFamily="{DynamicResource Montserrat-Medium}"
+                            FontSize="14"
+                            LineBreakMode="TailTruncation"
+                            LineHeight="{OnPlatform Android=1.5,
+                                                    iOS=1.25}"
+                            MaxLines="2"
+                            Style="{StaticResource LabelStyle}"
+                            Text="{Binding PorukaKlijent.Sadrzaj}" />
+
+
+                        <!--  Product Description  -->
+                       
+
+ 
+                    </Grid>
+                </ContentView>
+
+            </Grid>
+        </ContentView>
+    </ContentPage.Content>
+
+</ContentPage>

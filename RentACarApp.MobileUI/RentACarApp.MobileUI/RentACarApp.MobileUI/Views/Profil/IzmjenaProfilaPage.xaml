@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Profil.IzmjenaProfilaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:Behaviors="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:Validators="clr-namespace:RentACarApp.MobileUI.Validators.Implementations"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"    
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates"
+    xmlns:control="clr-namespace:RentACarApp.MobileUI.Controls"
+    x:Name="profileEditPage"
+    Title="Profile Edit page"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DatetimeToStringConverter x:Key="cnvDateTimeConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            
+          <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+               
+            
+            <!--  Title View  -->
+            <controls:TitleView Title="Izmjena profila" Grid.Row="0">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BackButtonCommand}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+
+            
+            <StackLayout Grid.Row="1" Margin="70,20,70,0" Orientation="Vertical">
+                    <StackLayout.Behaviors>
+                        <Behaviors:ValidationGroupBehavior x:Name="form"/>
+                    </StackLayout.Behaviors>
+
+
+                    <Label Text="Ime" FontAttributes="Bold"></Label>
+                <!--<Entry x:Name="ime" IsReadOnly="False" Placeholder="Ime" FontSize="Small" Text="{Binding Ime}"></Entry>-->
+
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"                        
+                            BorderColor="{Binding Source={x:Reference ImeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessForProfilEntry
+                                x:Name="ImeEntry"
+                                IsPassword="False"
+                                Placeholder="Ime"
+                                Style="{StaticResource EntryStyleProfil}"
+                                Text="{Binding Ime}">
+                            <control:BorderlessForProfilEntry.Behaviors>
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" 
+                                              PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                        <Validators:FormatValidator
+                                            Message="Unesite ime u ispravnom formatu." 
+                                            Format="^[a-zA-ZŠĐČĆŽšđčćž]+$" />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </control:BorderlessForProfilEntry.Behaviors>
+                        </control:BorderlessForProfilEntry>
+                    </border:SfBorder>       
+
+                    <Label Text="Prezime" FontAttributes="Bold"></Label>
+                <!--<Entry x:Name="prezime" IsReadOnly="False" Placeholder="Prezime" FontSize="Small" Text="{Binding Prezime}"></Entry>-->
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference PrezimeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessForProfilEntry
+                                x:Name="PrezimeEntry"
+                                IsPassword="False"
+                                Placeholder="Prezime"
+                                Style="{StaticResource EntryStyleProfil}"
+                                Text="{Binding Prezime}">
+                            <control:BorderlessForProfilEntry.Behaviors>
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" 
+                                              PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                        <Validators:FormatValidator
+                                            Message="Unesite prezime u ispravnom formatu." 
+                                            Format="^[a-zA-ZŠĐČĆŽšđčćž]+$" />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </control:BorderlessForProfilEntry.Behaviors>                        
+                        </control:BorderlessForProfilEntry>
+
+                    </border:SfBorder>
+
+                    <Label Text="Email" FontAttributes="Bold"></Label>
+                <!--<Entry x:Name="email" IsReadOnly="False" Placeholder="Email" FontSize="Small" Text="{Binding Email}"></Entry>-->
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference EmailEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessForProfilEntry
+                                x:Name="EmailEntry"
+                                IsPassword="False"
+                                Placeholder="Email"
+                                Style="{StaticResource EntryStyleProfil}"
+                                Text="{Binding Email}">
+                            <control:BorderlessForProfilEntry.Behaviors>
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" 
+                                              PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                        <Validators:FormatValidator
+                                            Message="Unesite email u ispravnom formatu." 
+                                            Format="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </control:BorderlessForProfilEntry.Behaviors>
+                        </control:BorderlessForProfilEntry>
+                    </border:SfBorder>
+
+                    <Label Text="Telefon" FontAttributes="Bold"></Label>
+                    <!--<Entry x:Name="telefon" IsReadOnly="False" Placeholder="Telefon" FontSize="Small" Text="{Binding Telefon}"></Entry>-->
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference TelefonEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessForProfilEntry
+                                x:Name="TelefonEntry"
+                                IsPassword="False"
+                                Placeholder="Telefon"
+                            Keyboard="Numeric"
+                                Style="{StaticResource EntryStyleProfil}"
+                                Text="{Binding Telefon}">
+                            <control:BorderlessForProfilEntry.Behaviors>
+                                <Behaviors:MaskedBehavior Mask="(XXX) XXX - XXXX" />
+                                <Behaviors:ValidationBehavior Group="{x:Reference form}" 
+                                              PropertyName="Text">
+                                    <Behaviors:ValidationBehavior.Validators>
+                                        <Validators:RequiredValidator />
+                                        <Validators:FormatValidator
+                                            Message="Unesite telefon u ispravnom formatu." 
+                                            Format="^[(][0-9]{3}[)]\s[0-9]{3}\s[-]\s[0-9]{3,4}$" />
+                                    </Behaviors:ValidationBehavior.Validators>
+                                </Behaviors:ValidationBehavior>
+                            </control:BorderlessForProfilEntry.Behaviors>
+                        </control:BorderlessForProfilEntry>
+                    </border:SfBorder>
+
+                    <Label Text="Datum rođenja" FontAttributes="Bold"></Label>
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"                            
+                            BorderColor="{Binding Source={x:Reference TelefonEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessDatePicker 
+                            MaximumDate="{x:Static sys:DateTime.Now}"
+                            Format="dd.MM.yyyy"
+                            Date="{Binding DatumRodjenja}" 
+                            HorizontalOptions="CenterAndExpand"
+                            FontSize="Small"></control:BorderlessDatePicker>
+                    </border:SfBorder>
+
+                    <Label Text="Grad" FontAttributes="Bold"></Label>
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference GradPicker}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessPicker 
+                        x:Name="GradPicker"                                             
+                        Title="{Binding GradString}"
+                        ItemsSource="{Binding Gradovi}"                                               
+                        ItemDisplayBinding="{Binding Naziv}"
+                        SelectedItem="{Binding SelectedGrad}"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="Black"
+                        FontSize="14">
+                    
+                </control:BorderlessPicker>
+                    </border:SfBorder>
+
+                    <Label Text="Username" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding UserName}"></Label>
+                    <Label Text="Status" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding StatusString}"></Label>
+                    <Label Text="Adresa" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding Adresa}"></Label>
+
+                    <Label Text="Datum registracije" FontAttributes="Bold"></Label>                    
+                    <Label Text="{Binding DatumRegistracije, Converter={StaticResource cnvDateTimeConverter}}"></Label>
+
+
+                    <buttons:SfButton  
+                        x:Name="btnSnimi"
+                        Style="{StaticResource RoundButtonStyle}"
+                        TextColor="{DynamicResource Gray-White}"
+                        WidthRequest="1500"
+                        Text="Potvrdi" Margin="50,10,50,50" Clicked="btnSnimi_Clicked"
+                        IsEnabled="{Binding Source={x:Reference form}, Path=IsValid}"></buttons:SfButton>
+            </StackLayout>
+
+            
+        </Grid>
+       </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

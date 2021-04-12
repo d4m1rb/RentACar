@@ -1,0 +1,110 @@
+﻿@model RentACar.WebAplikacija.ViewModels.RezervacijaAdmPosaljiPorukuVM
+@{
+    ViewData["Title"] = "Slanje poruke";
+    Layout = "~/Views/Shared/_LayoutTemplateAdmin.cshtml";
+}
+
+@section Scripts
+{
+   
+}
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- end:: Subheader -->
+    <!-- begin:: Content -->
+
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="row">
+
+            <div class="col-lg-100" style="display:inline-block; width:100%; align-items:middle;text-align:center;">
+                <form class="kt-form" action="/RezervacijaAdm/PosaljiPorukuSnimi" method="post">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet" style="width:400px;display:inline-block; text-align:left;">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Slanje nove poruke
+                                </h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <input asp-for="@Model.KlijentId" readonly type="hidden" />
+                        <input asp-for="@Model.RezervacijaRentanjaId" readonly type="hidden" />
+
+                        <div class="kt-portlet__body">
+                            <div class="kt-section kt-section--first" style="margin-bottom:0px;">
+                                <h3 class="kt-section__title" style="text-align:center;">Detalji poruke:</h3>
+                                <div class="kt-section__body">
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label-static">Pošiljaoc:</label>
+
+
+
+                                        <div class="col-lg-6">
+                                            <p class="form-control-static">@Model.PosiljaocInfo</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label-static">Primaoc:</label>
+
+
+
+                                        <div class="col-lg-6">
+                                            <p class="form-control-static">@Model.PrimaocInfo</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="kt-section__title" style="text-align:center;">Poruka</h3>
+                                <div class="kt-section__body">
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-6 col-form-label" for="Sadrzaj">Naslov poruke</label>
+                                        <input asp-for="@Model.Naslov"
+                                               required
+                                               oninvalid="this.setCustomValidity('Naslov poruke je obavezan!')"
+                                               oninput="setCustomValidity('')"
+                                               class="form-control" id="Naslov" name="Naslov" value="@Model.Naslov" />
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-6 col-form-label" for="Sadrzaj">Tekst poruke</label>
+                                        <textarea asp-for="@Model.Sadrzaj"
+                                                  required
+                                                  oninvalid="this.setCustomValidity('Sadržaj poruke je obavezan!')"
+                                                  oninput="setCustomValidity('')"
+                                                  class="form-control" id="Sadrzaj" rows="5" name="Sadrzaj">@Model.Sadrzaj</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Portlet-->
+
+                    <div class="col-lg-100" style="text-align:center">
+                        <button type="submit" class="btn btn-success">OK</button>
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+</div>
+
