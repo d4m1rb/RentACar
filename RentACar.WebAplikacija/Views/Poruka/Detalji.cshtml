@@ -1,0 +1,169 @@
+﻿@model RentACar.WebAplikacija.ViewModels.PorukaDetaljiVM
+@{
+    ViewData["Title"] = "Detalji poruke";
+    Layout = "_LayoutTemplate";
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+                $("#ZavrseneRezervacijeListItem").addClass("kt-menu__item--active");
+                $("#RezervacijaGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#RezervacijaSporedniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("RezervacijaGlavniMeniDiv").style = "";
+                document.getElementById("RezervacijaSporedniMeniDiv").style = "";
+            });
+        });
+    </script>
+}
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <form class="kt-form" action="/Poruka/Procitaj?rezervacijaID=10" method="post" style="display:inline-block;">
+        <!-- begin:: Subheader -->
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-container  kt-container--fluid ">
+                <div class="kt-subheader__main">
+                    <h3 class="kt-subheader__title">
+
+                        Detalji poruke
+                    </h3>
+
+                    <span class="kt-subheader__separator kt-hidden"></span>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- end:: Subheader -->
+        <!-- begin:: Content -->
+
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row">
+
+                <div class="col-lg-100" style="padding-right:10px; display:inline-block; width:100%; align-items:middle;text-align:center;">
+                    <!--begin::Portlet-->
+                    <div class="kt-portlet" style="width:400px;display:inline-block; text-align:left;">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Poruka od uposlenika
+                                </h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <form class="kt-form" action="/Poruka/Procitaj?rezervacijaID=@Model.RezervacijaID" method="post">
+                            <div class="kt-portlet__body">
+                                <div class="kt-section kt-section--first" style="margin-bottom:0px;">
+                                    <h3 class="kt-section__title" style="text-align:center;">1. Poruka od uposlenika:</h3>
+                                    <div class="kt-section__body">
+
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label-static">Pošiljaoc:</label>
+
+
+
+                                            <div class="col-lg-6">
+                                                <p class="form-control-static">@Model.porukaUposlenik.PosiljaocInfo</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label-static">Primaoc:</label>
+
+
+
+                                            <div class="col-lg-6">
+                                                <p class="form-control-static">@Model.porukaUposlenik.PrimaocInfo</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h3 class="kt-section__title" style="text-align:center;">Poruka</h3>
+                                    <div class="kt-section__body">
+
+                                        <div class="form-group row">
+
+                                            <label class="col-lg-6 col-form-label" for="exampleTextarea">Tekst poruke</label>
+                                            <textarea asp-for="@Model.porukaUposlenik.Sadrzaj" readonly="" class="form-control" id="exampleTextarea" rows="5" name="porukaUposlenik.Sadrzaj">@Model.porukaUposlenik.Sadrzaj</textarea>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Portlet-->
+
+                    <div class="kt-portlet" style="width:400px;display:inline-block; text-align:left;margin-left:100px;">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Poruka od klijenta
+                                </h3>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+
+                        <div class="kt-portlet__body">
+                            <div class="kt-section kt-section--first" style="margin-bottom:0px;">
+                                <h3 class="kt-section__title" style="text-align:center;">2. Poruka od klijenta:</h3>
+                                <div class="kt-section__body">
+
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label-static">Pošiljaoc:</label>
+
+
+
+                                        <div class="col-lg-6">
+                                            <p class="form-control-static">@Model.porukaKlijent.PosiljaocInfo</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label-static">Primaoc:</label>
+
+
+
+                                        <div class="col-lg-6">
+                                            <p class="form-control-static">@Model.porukaKlijent.PrimaocInfo</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 class="kt-section__title" style="text-align:center;">Poruka</h3>
+                                <div class="kt-section__body">
+
+                                    <div class="form-group row">
+
+                                        <label class="col-lg-6 col-form-label" for="exampleTextarea">Tekst poruke</label>
+                                        <textarea readonly="" class="form-control" id="exampleTextarea" rows="5" name="porukaKlijent.Sadrzaj">@Model.porukaKlijent.Sadrzaj</textarea>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-100" style="text-align:center">
+                        <button type="submit" class="btn btn-success">OK</button>
+                    </div>
+    </form>
+    <!--end::Form-->
+</div>
+        </div>
+    </div>
+
+    <!-- end:: Content -->
+</div>
+

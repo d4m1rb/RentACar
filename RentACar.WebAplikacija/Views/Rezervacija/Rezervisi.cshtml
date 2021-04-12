@@ -1,0 +1,194 @@
+﻿@model RentACar.WebAplikacija.ViewModels.RezervacijeRezervisiVM
+@{
+    ViewData["Title"] = "Potvrda rezervacije";
+    Layout = "~/Views/Shared/_LayoutTemplate.cshtml";
+}
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $().ready(function () {
+
+                var p = $("li");
+
+                p.removeClass("kt-menu__item--active");
+                p.removeClass("kt-menu__item--here");
+                p.removeClass("kt-menu__item--open");
+
+
+                $("#RezervacijaGlavniMeni").addClass("kt-menu__item--open kt-menu__item--here");
+                $("#RezervacijaSporedniMeni2").addClass("kt-menu__item--open kt-menu__item--here");
+
+                document.getElementById("RezervacijaGlavniMeniDiv").style = "";
+                document.getElementById("RezervacijaSporedniMeniDiv").style = "";
+            });
+        });
+    </script>
+
+    <script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/components/extended/sweetalert2.js" type="text/javascript" aria-hidden="true"></script>
+
+    @if (TempData["poruka"] != null)
+    {
+        <script>
+        window.addEventListener("load", function () {
+            swal.fire("Poruka","@TempData["poruka"]");
+        });
+        </script>
+    }
+}
+
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader" bis_skin_checked="1">
+    <div class="kt-container  kt-container--fluid " bis_skin_checked="1">
+        <div class="kt-subheader__main" bis_skin_checked="1">
+            <h3 class="kt-subheader__title">Potvrda rezervacije</h3>
+
+            <span class="kt-subheader__separator kt-hidden"></span>
+
+        </div>
+        <div class="kt-subheader__toolbar" bis_skin_checked="1">
+
+        </div>
+    </div>
+</div>
+<!-- end:: Subheader -->
+<!-- begin:: Content -->
+<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid" bis_skin_checked="1">
+
+
+    <!--begin::Portlet-->
+    <div class="kt-portlet" bis_skin_checked="1">
+        <div class="kt-portlet__head" bis_skin_checked="1">
+            <div class="kt-portlet__head-label" bis_skin_checked="1">
+                <h3 class="kt-portlet__head-title">Podaci o rezervaciji</h3>
+            </div>
+        </div>
+        <!--begin::Form-->
+        <form class="kt-form kt-form--label-right" asp-action="PotvrdiRezervaciju">
+            <div class="kt-portlet__body" bis_skin_checked="1">
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Datum početka rezervacije</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <div class="input-group date" bis_skin_checked="1">
+                            <input asp-for="@Model._datumRezervacijeOdString" name="_datumRezervacijeOdString" type="text" class="form-control" readonly="" id="DRezervacijaOd" value="@Model._datumRezervacijeOd.ToString("dd-MM-yyyy")">
+                            <div class="input-group-append" bis_skin_checked="1">
+                                <span class="input-group-text">
+                                    <i class="la la-calendar-check-o"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Datum završetka rezervacije</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <div class="input-group date" bis_skin_checked="1">
+                            <input asp-for="@Model._datumRezervacijeDoString" name="_datumRezervacijeDoString" type="text" class="form-control" readonly="" id="DRezervacijaDo" value="@Model._datumRezervacijeDo.ToString("dd-MM-yyyy")">
+                            <div class="input-group-append" bis_skin_checked="1">
+                                <span class="input-group-text">
+                                    <i class="la la-calendar-check-o"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Vraćanje u poslovnicu</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-off bootstrap-switch-focused" style="width: 78.8px;" bis_skin_checked="1">
+                            <input asp-for="@Model._vracanjeUPoslovnicu" data-switch="true" type="checkbox" data-on-color="brand" data-on-text="DA" data-off-text="NE">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Cijena kasko (dan)</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <input asp-for="@Model._cijenaKaskoString" type="text" class="form-control" value="@Model._cijenaKaskoString" readonly>
+                    </div>
+                </div>
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Kasko osiguranje</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <div id="KaskoDiv" class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate bootstrap-switch-off bootstrap-switch-focused" style="width: 78.8px;" bis_skin_checked="1">
+                            <input asp-for="@Model._kaskoOsiguranje" id="KaskoSwitch" data-switch="true" type="checkbox" data-on-color="brand" data-on-text="DA" data-off-text="NE" onchange="IzracunajCijenu()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Lokacija preuzimanja</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <input asp-for="@Model._lokacijaPreuzimanja" type="text" class="form-control" placeholder="Lokacija preuzimanja">
+                    </div>
+                </div>
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Popust</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <input asp-for="@Model._popust" type="text" class="form-control" value="@Model._popust" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group row" bis_skin_checked="1">
+                    <label class="col-form-label col-lg-3 col-sm-12">Ukupna cijena</label>
+                    <div class="col-lg-4 col-md-9 col-sm-12" bis_skin_checked="1">
+                        <input id="UkupnaCijena" asp-for="@Model._ukupnoCijena" type="text" class="form-control" value="@Model._ukupnoCijena.ToString("0.00")" readonly>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="kt-portlet__foot" bis_skin_checked="1">
+                <div class="kt-form__actions" bis_skin_checked="1">
+                    <div class="row" bis_skin_checked="1">
+                        <div class="col-lg-9 ml-lg-auto" bis_skin_checked="1">
+                            <button type="submit" class="btn btn-brand">Rezerviši vozilo</button>
+                            <a href="/Rezervacija/PretragaDatum" class="btn btn-secondary">Odustani</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input asp-for="@Model._ukupnoCijenaBezKaska" type="text" value="@Model._ukupnoCijenaBezKaska" readonly hidden />
+            <input asp-for="@Model._ukupnoCijenaSaKaskom" type="text" value="@Model._ukupnoCijenaSaKaskom" readonly hidden />
+            <input asp-for="@Model.AutomobilId" type="text" value="@Model.AutomobilId" readonly hidden />
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Portlet-->
+
+
+
+
+
+
+</div>
+<!-- end:: Content -->
+
+<script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/plugins/global/plugins.bundle.js" type="text/javascript" aria-hidden="true"></script>
+<script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/scripts.bundle.js" type="text/javascript" aria-hidden="true"></script>
+<script src="/metronic/themes/metronic/theme/default/demo12/dist/assets/js/pages/crud/forms/widgets/bootstrap-switch.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function IzracunajCijenu() {
+        //var kaskoSw = $("#KaskoSwitch");
+        var kaskoDiv = $("div.bootstrap-switch-id-KaskoSwitch");
+        var ukupno = $("#UkupnaCijena");
+
+        if (kaskoDiv.hasClass("bootstrap-switch-on")) {
+
+            ukupno.val('@Model._ukupnoCijenaSaKaskom.ToString("0.00")');
+
+        }
+        else {
+            ukupno.val('@Model._ukupnoCijenaBezKaska.ToString("0.00")');
+        };
+    };
+</script>

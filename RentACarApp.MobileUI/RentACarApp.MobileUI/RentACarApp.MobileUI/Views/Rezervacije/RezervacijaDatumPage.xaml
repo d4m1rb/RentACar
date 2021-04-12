@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Rezervacije.RezervacijaDatumPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates"
+    x:Name="reservationDatePage"
+    Title="Reservation Date page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Rezervacija vozila" Grid.Row="0">
+                <controls:TitleView.LeadingView>
+                    <buttons:SfButton
+                            Command="{Binding MenuCommand}"
+                            CornerRadius="4"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource BurgerMenu}" />
+                </controls:TitleView.LeadingView>
+            </controls:TitleView>
+
+            <StackLayout Grid.Row="1" Margin="100,20,100,0">
+                <Label Text="Datum početka rezervacije"></Label>
+
+                <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference DatumOdDatePicker}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                    <controls:BorderlessDatePicker 
+                        x:Name="DatumOdDatePicker"
+                        Format="dd.MM.yyyy"
+                        HorizontalOptions="Center"
+                        MinimumDate="{x:Static sys:DateTime.Now}" 
+                        Date="{Binding RezervacijaOd, Mode=TwoWay}"></controls:BorderlessDatePicker>
+                </border:SfBorder>
+
+               
+
+                <Label Text="Datum završetka rezervacije"></Label>
+
+                <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                        
+                            BorderColor="{Binding Source={x:Reference DatumDoDatePicker}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                    <controls:BorderlessDatePicker 
+                        x:Name="DatumDoDatePicker"
+                        Format="dd.MM.yyyy" 
+                        HorizontalOptions="Center"
+                        MinimumDate="{Binding RezervacijaOd}" 
+                        Date="{Binding RezervacijaDo, Mode=TwoWay}"></controls:BorderlessDatePicker>
+                </border:SfBorder>
+
+
+                <buttons:SfButton x:Name="btnDostupnaVozila" 
+                                  Style="{StaticResource RoundButtonStyle}"
+                                  Text="Pronađi vozila" Margin="10,10,10,0" 
+                                  WidthRequest="1500" 
+                                  TextColor="{DynamicResource Gray-White}"
+                                  IsEnabled="True"
+                                  Clicked="btnDostupnaVozila_Clicked"></buttons:SfButton>
+
+                <Label                   
+                    IsVisible="False"
+                    x:Name="labelPorukaPretraga"
+                    Margin="0,20,0,0"
+                    TextColor="Red"
+                    HorizontalTextAlignment="Center">
+                    <Label.Text>
+                        Molimo sačekajte dok                        pretražujemo dostupna                       vozila za Vas...
+                    </Label.Text>
+                </Label>
+            </StackLayout>
+         
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

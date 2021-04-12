@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="RentACarApp.MobileUI.Views.Templates.Rezervacije.ListaRezervacijaTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    xmlns:converters="clr-namespace:RentACarApp.MobileUI.Converters;assembly=RentACarApp.MobileUI"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    x:Name="zRezervacijeListTemplate">
+
+    <Grid.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+            <converters:DatetimeToStringConverter x:Key="cnvDateTimeConverter"></converters:DatetimeToStringConverter>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <StackLayout BackgroundColor="LightGray">
+        <Grid
+        BackgroundColor="White"
+        Margin="5,8,5,0"
+        ColumnSpacing="0"
+        HorizontalOptions="FillAndExpand"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{OnIdiom Default=Auto, Desktop=0.2*}" />
+                <ColumnDefinition Width="{OnIdiom Default=*, Desktop=*}" />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Product Image  -->
+            <StackLayout
+                VerticalOptions="Start"
+                Grid.RowSpan="4"
+                Margin="8,15,16,0">
+
+                <Image
+                    Margin="1"
+                    Aspect="AspectFit"
+                    VerticalOptions="Center"
+                    Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}"
+                    BackgroundColor="{DynamicResource Gray-F0}"
+                    HeightRequest="{OnIdiom Default=90, Desktop=120}"
+                    WidthRequest="{OnIdiom Default=130, Desktop=200}">
+                </Image>
+
+            </StackLayout>
+            
+
+            <!--  Product Name  -->
+            <Label
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="CenterAndExpand"
+            Margin="0,8,0,16"
+            FontFamily="{StaticResource Montserrat-SemiBold}"
+            LineBreakMode="TailTruncation"
+            MaxLines="1"
+            Style="{StaticResource LabelStyle}"
+            Text="{Binding VoziloProizvodjacModel}"
+            TextColor="{DynamicResource Gray-900}" />
+
+            <!--  Product Description  -->
+            <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="CenterAndExpand"
+            Margin="0,0,0,4"
+            FontFamily="{StaticResource Montserrat-Medium}"
+            FontSize="12"
+            LineBreakMode="TailTruncation"
+            LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+            MaxLines="2"
+            Style="{StaticResource LabelStyle}"
+            Text="{Binding RezervacijaOd, StringFormat='Od: {0}', Converter={StaticResource cnvDateTimeConverter}}" />
+            <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="CenterAndExpand"
+            Margin="0,0,0,8"
+            FontFamily="{StaticResource Montserrat-Medium}"
+            FontSize="12"
+            LineBreakMode="TailTruncation"
+            LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+            MaxLines="2"
+            Style="{StaticResource LabelStyle}"
+            Text="{Binding RezervacijaDo,StringFormat='Do: {0}', Converter={StaticResource cnvDateTimeConverter}}" />
+
+            <StackLayout
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,0,0,0"
+            HeightRequest="50"
+            Orientation="Vertical"
+            Spacing="0">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!--  Product Price  -->
+                    <!--<Label
+                    Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontSize="14"
+                    Margin="0,0,0,0"
+                HorizontalOptions="Start"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource LabelStyle}"
+                Text="Ukupno:"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="End"
+                VerticalTextAlignment="Center"
+                    />-->
+
+
+                    <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                    Margin="0,0,0,0"
+                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontSize="14"
+                HorizontalOptions="End"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource LabelStyle}"
+                Text="{Binding IznosSaPopustom, StringFormat='Ukupno:  {0:0 } KM'}"
+                TextColor="{DynamicResource PrimaryColor}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+                    <!--<buttons:SfButton 
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                HorizontalOptions="EndAndExpand"
+                Text="PORUKE"
+                x:Name="PorukeButton"
+                HeightRequest="10"
+                CommandParameter="{Binding RezervacijaRentanjaId}"
+                Clicked="PorukeButton_Clicked"
+               />-->
+
+                    <!--<buttons:SfButton 
+                Grid.Row="1"
+                 Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="EndAndExpand"
+                Text="DETALJI"
+                x:Name="DetaljiButton"
+                CommandParameter="{Binding RezervacijaRentanjaId}"
+                Clicked="DetaljiButton_Clicked"/>-->
+
+                    <!--<Label
+                Margin="0,6,0,6"
+                FontFamily="{StaticResource Montserrat-Medium}"
+                FontSize="12"
+                HorizontalOptions="Start"
+                Style="{StaticResource LabelStyle}"
+                Text="{Binding ActualPrice, StringFormat='${0:0.00}'}"
+                TextDecorations="Strikethrough"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center" />-->
+                </Grid>
+            </StackLayout>
+
+            <!--  Product Rating  -->
+            <!--<rating:SfRating
+            Grid.Row="3"
+            Grid.Column="1"
+            RatingSettings="{StaticResource RatingSettings}"
+            Style="{StaticResource SfRatingStyle}"
+            Value="{Binding OverallRating}" />-->
+        </Grid>       
+    </StackLayout>
+    
+</Grid>

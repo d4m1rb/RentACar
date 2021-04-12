@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RentACarApp.MobileUI.Views.Rezervacije.RezervacijaPotvrdaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:behavior="clr-namespace:RentACarApp.MobileUI.Behaviors.Catalog"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:RentACarApp.MobileUI.Behaviors"
+    xmlns:controls="clr-namespace:RentACarApp.MobileUI.Controls"
+    xmlns:converter="clr-namespace:RentACarApp.MobileUI.Converters"
+    
+    xmlns:helper="clr-namespace:RentACarApp.MobileUI.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:template="clr-namespace:RentACarApp.MobileUI.Views.Templates"
+    x:Name="reservationConfirmPage"
+    Title="Reservation Confirm page"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DatetimeToStringConverter x:Key="cnvDateTimeConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Potvrda rezervacije" Grid.Row="0" Grid.ColumnSpan="3">
+               
+            </controls:TitleView>
+
+            <StackLayout Grid.Row="1" Margin="10,20,10,0" Orientation="Vertical" Grid.Column="1">
+               
+
+                <Label Text="Automobil" FontAttributes="Bold"></Label>
+                <Label Text="{Binding InputMod._automobil.ProizvodjacModel}" HorizontalOptions="Center"></Label>
+
+                <Label Text="Lokacija preuzimanja" FontAttributes="Bold"></Label>
+                <!--<Entry x:Name="lokacijaPreuzimanja" IsReadOnly="False" Placeholder="npr. Poslovnica" FontSize="Small" Text="{Binding InputMod._lokacijaPreuzimanja}"></Entry>-->
+                    <border:SfBorder
+                            Grid.Row="2"
+                            Margin="0,5"
+                            BorderColor="{Binding Source={x:Reference lokacijaPreuzimanja}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=5}"
+                            Style="{StaticResource SfBorderStyle}">
+                        <controls:BorderlessEntry
+                                x:Name="lokacijaPreuzimanja"
+                                IsPassword="False"
+                                Placeholder="npr. Poslovnica"
+                            HeightRequest="30"
+                            FontSize="Small"
+                            HorizontalOptions="Center"
+                                Style="{StaticResource EntryStyle}"
+                                Text="{Binding InputMod._lokacijaPreuzimanja}" />
+                    </border:SfBorder>
+
+
+                    <Label Text="Datum početka rezervacije" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding InputMod._datumRezervacijeOd, Converter={StaticResource cnvDateTimeConverter}}"  HorizontalOptions="Center"></Label>
+                <!--<DatePicker MinimumDate="{x:Static sys:DateTime.Now}" Date="{Binding RezervacijaOd, Mode=TwoWay}"></DatePicker>-->
+
+                <Label Text="Datum završetka rezervacije" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding InputMod._datumRezervacijeDo, Converter={StaticResource cnvDateTimeConverter}}"  HorizontalOptions="Center"></Label>
+                <!--<DatePicker MinimumDate="{Binding RezervacijaOd}" Date="{Binding RezervacijaDo, Mode=TwoWay}"></DatePicker>-->
+
+                <Label Text="Cijena po danu" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding InputMod._automobil.CijenaIznajmljivanja, StringFormat='{0} KM'}"  HorizontalOptions="Center"></Label>
+
+                <Label Text="Vracanje u poslovnicu" FontAttributes="Bold"></Label>
+                <Switch x:Name="poslovnicaSwitch" IsToggled="{Binding InputMod._vracanjeUPoslovnicu}"></Switch>
+
+                <Label Text="Kasko osiguranje" FontAttributes="Bold"></Label>
+                    <Label Text="{Binding InputMod._cijenaKaskoString}" HorizontalOptions="Center"></Label>
+                <Switch x:Name="kaskoSwitch" IsToggled="{Binding InputMod._kaskoOsiguranje}" Toggled="kaskoSwitch_Toggled"></Switch>
+
+                <Label Text="Popust" FontAttributes="Bold" TextColor="Red"></Label>
+                    <Label x:Name="popustLabel" Text="{Binding InputMod._popustString}"></Label>
+                
+                <Label Text="Ukupno" FontAttributes="Bold" TextColor="Red"></Label>
+                    <Label x:Name="cijenaLabel" Text="{Binding InputMod._ukupnoCijena}"></Label>
+                
+                <buttons:SfButton 
+                    x:Name="btnRezervisi" 
+                    Style="{StaticResource RoundButtonStyle}"
+                    TextColor="{DynamicResource Gray-White}"
+                    WidthRequest="150"
+                    HeightRequest="40" Text="Potvrdi" Margin="50,30,50,50" Clicked="btnRezervisi_Clicked"></buttons:SfButton>
+            </StackLayout>
+         
+
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

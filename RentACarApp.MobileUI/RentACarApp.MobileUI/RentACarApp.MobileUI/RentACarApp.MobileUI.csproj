@@ -1,0 +1,297 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <AssemblyName>RentACarApp.MobileUI</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\ecommerce.json" />
+    <None Remove="Data\navigation.json" />
+    <None Remove="Images\SomethingWentWrong.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ecommerce.json" />
+    <EmbeddedResource Include="Data\navigation.json" />
+    <EmbeddedResource Include="Images\SomethingWentWrong.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl" Version="2.8.2" />
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="LiveXAML" Version="2.1.73" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.4.0.50" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="17.4.0.50" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\RentACarApp.Model\RentACarApp.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Login\LoginWaitPage.xaml.cs">
+      <DependentUpon>LoginWaitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Poruke\ListaPorukaPage.xaml.cs">
+      <DependentUpon>ListaPorukaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Pocetna\PocetnaPage.xaml.cs">
+      <DependentUpon>PocetnaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Poruke\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Poruke\StylesDetalji.xaml.cs">
+      <DependentUpon>StylesDetalji.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Postavke\PostavkePage.xaml.cs">
+      <DependentUpon>PostavkePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\IzmjenaProfilaPage.xaml.cs">
+      <DependentUpon>IzmjenaProfilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\IzmjenaPasswordaPage.xaml.cs">
+      <DependentUpon>IzmjenaPasswordaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\ProfilPage.xaml.cs">
+      <DependentUpon>ProfilPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\DetaljiRezervacijePage.xaml.cs">
+      <DependentUpon>DetaljiRezervacijePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\ListaRezervacijaPage.xaml.cs">
+      <DependentUpon>ListaRezervacijaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\RezervacijaPotvrdaPage.xaml.cs">
+      <DependentUpon>RezervacijaPotvrdaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\RezervacijaDatumPage.xaml.cs">
+      <DependentUpon>RezervacijaDatumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\StylesDetalji.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Poruke\ListaPorukaTemplate.xaml.cs">
+      <DependentUpon>ListaPorukaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Poruke\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Rezervacije\ListaRezervacijaTemplate.xaml.cs">
+      <DependentUpon>ListaRezervacijaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Rezervacije\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Vozila\ListaVozilaTemplate.xaml.cs">
+      <DependentUpon>ListaVozilaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Vozila\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Vozila\ListaDostupnihVozilaTemplate.xaml.cs">
+      <DependentUpon>ListaDostupnihVozilaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\DetaljiDostupnogVozilaPage.xaml.cs">
+      <DependentUpon>DetaljiDostupnogVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\DetaljiVozilaPage.xaml.cs">
+      <DependentUpon>DetaljiVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\ListaVozilaPage.xaml.cs">
+      <DependentUpon>ListaVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\ListaDostupnihVozilaPage.xaml.cs">
+      <DependentUpon>ListaDostupnihVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\RezervacijaPotvrdaPage.xaml.cs">
+      <DependentUpon>RezervacijaPotvrdaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Poruke\PorukaOdgovoriPage.xaml.cs">
+      <DependentUpon>PorukaOdgovoriPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\RezervacijaDatumPage.xaml.cs">
+      <DependentUpon>RezervacijaDatumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rezervacije\ListaRezervacijaPage.xaml.cs">
+      <DependentUpon>ListaRezervacijaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Poruke\PorukaDetaljiPage.xaml.cs">
+      <DependentUpon>PorukaDetaljiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\DetaljiDostupnogVozilaPage.xaml.cs">
+      <DependentUpon>DetaljiDostupnogVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\IzmjenaPasswordaPage.xaml.cs">
+      <DependentUpon>IzmjenaPasswordaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Profil\IzmjenaProfilaPage.xaml.cs">
+      <DependentUpon>IzmjenaProfilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Poruke\ListaPorukaTemplate.xaml.cs">
+      <DependentUpon>ListaPorukaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Vozila\ListaDostupnihVozilaTemplate.xaml.cs">
+      <DependentUpon>ListaDostupnihVozilaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\Rezervacije\ListaRezervacijaTemplate.xaml.cs">
+      <DependentUpon>ListaRezervacijaTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\Styles.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\DetaljiDostupnogVozilaPage.xaml.cs">
+      <DependentUpon>DetaljiDostupnogVozilaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Vozila\StylesDetalji.xaml.cs">
+      <DependentUpon>StylesDetalji.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="HomePageDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="HomePageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\LoginWaitPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Poruke\ListaPorukaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Poruke\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\DetaljiRezervacijePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\OcijeniRezervacijuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\StylesDetalji.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Poruke\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Rezervacije\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Vozila\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\ListaDostupnihVozilaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\RezervacijaPotvrdaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Poruke\PorukaOdgovoriPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\RezervacijaDatumPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Rezervacije\ListaRezervacijaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\ListaVozilaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Pocetna\PocetnaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Pocetna\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Poruke\PorukaDetaljiPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\DetaljiDostupnogVozilaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\DetaljiVozilaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Profil\IzmjenaPasswordaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Profil\IzmjenaProfilaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Postavke\PostavkePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Postavke\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Poruke\ListaPorukaTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Vozila\ListaDostupnihVozilaTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Rezervacije\ListaRezervacijaTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Vozila\ListaVozilaTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Vozila\StylesDetalji.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
